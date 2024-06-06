@@ -1,0 +1,12 @@
+dash==2.17.0
+feffery-antd-components==0.2.11
+feffery-utils-components==0.1.29
+SQLAlchemy==2.0.30
+pydantic-settings==2.2.1
+flask-compress==1.15
+loguru==0.7.2
+fastapi==0.111.0
+passlib==1.7.4
+PyMySQL==1.0.3
+python-jose[cryptography]==3.3.0
+bcrypt==4.1.3
