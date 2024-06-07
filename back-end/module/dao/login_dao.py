@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import and_
-from module.entity.do.user_do import SysUser
+from module.entity.user_entity import SysUser
 
 
 def login_by_account(db: Session, email: str):

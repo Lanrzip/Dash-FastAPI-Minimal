@@ -1,0 +1,41 @@
+/*滚动条自定义样式*/
+*::-webkit-scrollbar-thumb {
+  background-color: #bfbfbf;
+  outline: none;
+  border-radius: 6px;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/*火狐浏览器*/
+* {
+  scrollbar-width: thin;
+}
+
+
+.index-side-menu::-webkit-scrollbar { 
+  width: 0;
+}
+
+/* .index-side-menu { 
+  overflow: -moz-scrollbars-none; 
+}
+  
+.index-side-menu:hover {
+    overflow: hidden auto;
+  }
+  
+.index-side-menu {
+    overflow: hidden;
+  } */
+
+/* #-side-menu::-webkit-scrollbar { 
+    width: 0;
+}
+
+#side-menu { 
+    overflow: -moz-scrollbars-none; 
+} */

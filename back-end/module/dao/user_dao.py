@@ -1,6 +1,6 @@
 from sqlalchemy import and_, or_, desc, func
 from sqlalchemy.orm import Session
-from module.entity.do.user_do import User
+from module.entity.user_entity import User
 
 class UserDao:
     """
