@@ -2,6 +2,7 @@ from dash import html
 import feffery_antd_components as fac
 import feffery_utils_components as fuc
 from .components.aside import render_aside_content
+from .components.head import render_head_content
 
 def render_content():
     
@@ -28,14 +29,14 @@ def render_content():
                                     id='side-menu-container',
                                     style={
                                         'width': '280px',
-                                        # 'height': 'calc(100vh - 1px)',
+                                        'height': '100%',  # 右侧出现滚动条的情况下，设置full-screen会使滚动条抽搐
                                         'transition': 'width 0.2s',
                                         'borderRight': '1px solid rgb(240, 240, 240)',
-                                        'paddingRight': 20,
-                                }
+                                        'paddingRight': 10,
+                                    }
                                     # className='w-[280px] h-screen transition-width duration-200 border-r border-gray-200 flex-column'
                                 ),
-                                offsetTop=0,
+                                offsetTop=0
                             ),
                             flex='none'
                             # className='flex-grow-0 flex-shrink-0 basis-auto h-full max-w-full relative'
@@ -46,20 +47,14 @@ def render_content():
                                 html.Div(
                                     [
                                         html.Div(
-                                            '右侧头部区域',
+                                            render_head_content(),
                                             className='min-h-20 px-10 flex items-center justify-between sticky top-0 bg-white z-1000 mb-4',
                                         ),
                                         html.Div(
                                             html.Div(
                                                 '右侧内容区',
-                                                # className='min-h-screen',
-                                                # className='flex-grow-1'
-                                                # style={
-                                                #     'minHeight': 'cal(100vh - 90px)',
-                                                # }
                                             ),
                                             id='docs-content',
-                                            # className='flex-grow-1',
                                             style={
                                                 'backgroundColor': 'rgb(255, 255, 255)'
                                             }
@@ -67,17 +62,12 @@ def render_content():
                                     ],
                                     # className='flex flex-col h-screen'
                                 ),
-                                # html.Div(
-                                    
-                                #     className='min-h-screen'
-                                #     # className="relative h-full py-[88px] px-4 bg-gray-100",
-                                # ),
                             ],
                             flex='auto'
                             # className='flex-grow-1 flex-shrink-1 basis-auto flex flex-col w-full'
                         )
                     ],
-                    wrap=False
+                    wrap=False  # 超出不自动换行
                     # className='flex flex-row min-w-full'
                 )
             ],

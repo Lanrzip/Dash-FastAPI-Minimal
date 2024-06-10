@@ -16,26 +16,97 @@
 }
 
 
-.index-side-menu::-webkit-scrollbar { 
+/* .index-side-menu::-webkit-scrollbar { 
   width: 0;
-}
-
-/* .index-side-menu { 
-  overflow: -moz-scrollbars-none; 
-}
-  
-.index-side-menu:hover {
-    overflow: hidden auto;
-  }
-  
-.index-side-menu {
-    overflow: hidden;
-  } */
-
-/* #-side-menu::-webkit-scrollbar { 
-    width: 0;
-}
-
-#side-menu { 
-    overflow: -moz-scrollbars-none; 
 } */
+
+
+:root {
+  --menu-item-border-radius: 8px;
+}
+
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+  border-right: none !important;
+}
+
+
+/* menu */
+.ant-menu {
+  font-weight: 600;
+  color: #637381;
+  padding: 12px;
+}
+
+/* group title */
+.ant-menu-item-group-title {
+  color: #919EAB;
+}
+
+/* menuitem */
+.ant-menu.ant-menu-sub.ant-menu-inline {
+  background-color: white;
+}
+
+.ant-menu-item a {
+  color: #637381;
+}
+
+.ant-menu-item a:hover {
+  color: #637381;
+}
+
+/* submenu */
+.ant-menu-submenu.ant-menu-submenu-inline span:hover {
+  color: #637381;
+}
+
+/* hover */
+.ant-menu-item:hover {
+  background-color: #F6F7F8;
+  border-radius: var(--menu-item-border-radius);
+}
+
+.ant-menu-submenu.ant-menu-submenu-inline:hover {
+  background-color: #F6F7F8;
+  border-radius: var(--menu-item-border-radius);
+}
+
+.ant-menu-item:hover .ant-menu-item-icon {
+  color:#637381;
+}
+
+/* clicked */
+.ant-menu-item:active {
+  background-color: #CACFD4;
+}
+
+/* selected */
+.ant-menu-item-selected {
+  border-radius: var(--menu-item-border-radius);
+  background-color: #F6F7F8;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #EBF8F4;
+}
+
+.ant-menu-item-selected .ant-menu-item-icon, .ant-menu-item-selected:hover .ant-menu-item-icon {
+  color: #00A76F;
+}
+
+/* selected a */
+.ant-menu-item-selected a, .ant-menu-item-selected a:hover {
+  color: #00A76F;
+}
+
+.ant-menu-inline .ant-menu-item:after, .ant-menu-vertical-left .ant-menu-item:after, .ant-menu-vertical-right .ant-menu-item:after, .ant-menu-vertical .ant-menu-item:after {
+  border-right: none;
+}
+
+/* submenu open */
+.ant-menu-submenu.ant-menu-submenu-inline.ant-menu-submenu-open {
+  background-color: #F6F7F8;
+  border-radius: var(--menu-item-border-radius);
+}

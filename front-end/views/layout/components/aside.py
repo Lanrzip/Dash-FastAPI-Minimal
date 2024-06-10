@@ -10,7 +10,7 @@ def render_aside_content():
 
     return [
         fac.AntdImage(
-            src='./assets/imgs/logo.svg',
+            src='./assets/imgs/logo.png',
             preview=False,
             className='h-10 w-10 ml-8 mt-6 mb-2'
         ),
@@ -26,7 +26,7 @@ def render_aside_content():
                 }
             ),
             style={
-                'height': 'calc(100vh - 78px)', # 高度要比整个页面高度少多余72px，否则会出现滚动条
+                'height': 'calc(100vh - 80px)', # 高度要比整个页面高度少多于72px，否则右侧会出现滚动条
                 'overflowY': 'auto',
                 'overflowX': 'hidden'
             }

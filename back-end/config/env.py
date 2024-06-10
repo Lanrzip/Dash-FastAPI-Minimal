@@ -41,6 +41,31 @@ class JwtSettings(BaseSettings):
     jwt_expire_minutes: int = 1440
     jwt_redis_expire_minutes: int = 30
 
+
+class RedisSettings(BaseSettings):
+    """
+    Redis配置
+    """
+    redis_host: str = '127.0.0.1'
+    redis_port: int = 6379
+    redis_username: str = ''
+    redis_password: str = ''
+    redis_database: int = 2
+
+
+class RedisInitKeyConfig:
+    """
+    系统内置Redis键名
+    """
+    ACCESS_TOKEN = {'key': 'access_token', 'remark': '登录令牌信息'}
+    SYS_DICT = {'key': 'sys_dict', 'remark': '数据字典'}
+    SYS_CONFIG = {'key': 'sys_config', 'remark': '配置信息'}
+    CAPTCHA_CODES = {'key': 'captcha_codes', 'remark': '图片验证码'}
+    ACCOUNT_LOCK = {'key': 'account_lock', 'remark': '用户锁定'}
+    PASSWORD_ERROR_COUNT = {'key': 'password_error_count', 'remark': '密码错误次数'}
+    SMS_CODE = {'key': 'sms_code', 'remark': '短信验证码'}
+
+
 class GetConfig:
     """
     获取配置
@@ -67,6 +92,13 @@ class GetConfig:
         """
         # 实例化Jwt配置模型
         return JwtSettings()
+    
+    def get_redis_config(self):
+        """
+        获取Redis配置
+        """
+        # 实例化Redis配置模型
+        return RedisSettings()
 
 
 get_config = GetConfig()
@@ -79,3 +111,6 @@ DataBaseConfig = get_config.get_database_config()
 
 # Jwt配置
 JwtConfig = get_config.get_jwt_config()
+
+# Redis配置
+RedisConfig = get_config.get_redis_config()

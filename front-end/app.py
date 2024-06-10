@@ -53,7 +53,7 @@ app.layout = html.Div(
 def router(pathname, url_trigger, session_token):
     # 检查当前会话是否已经登录
     token_result = session.get('Authorization')
-    print('app.py--router:  ', token_result, session_token)
+    # print('app.py--router:  ', token_result, session_token)
     # 若已登录
     if token_result and session_token and token_result == session_token:
         if pathname in RouterConfig.STATIC_VALID_PATHNAME:

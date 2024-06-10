@@ -34,28 +34,28 @@ cn_to_en = {
 class MenuConfig:
     
     overviewSubMenu = {
-        '应用 App': [],
-        '电商 E-Commerce': [],
-        '分析 Analytics': [],
-        '银行 Banking': [],
-        '预定 Booking': [],
-        '文件 File': []
+        '应用 App antd-app-store': [],
+        '电商 E-Commerce antd-shopping-cart': [],
+        '分析 Analytics antd-line-chart': [],
+        '银行 Banking antd-bank': [],
+        '预定 Booking antd-book': [],
+        '文件 File antd-file-text': []
     }
 
 
     managmentSubMenu = {
-        '用户 User': ['个人资料', '卡片', '列表', '创建', '编辑', '账户'],
-        '产品 Product': ['列表', '详情', '创建', '编辑'],
-        '订单 Order': ['列表', '详情'],
-        '发票 Invoice': ['列表', '详情', '创建', '编辑'],
-        '博客 Blog': ['列表', '详情', '创建', '编辑'],
-        '任务 Job': ['列表', '详情', '创建', '编辑'],
-        '旅行 Tour': ['列表', '详情', '创建', '编辑'],
-        '文件管理 File Manager': [],
-        '邮箱 Mail': [],
-        '聊天 Chat': [],
-        '日历 Calendar': [],
-        '看板 Kanban': []
+        '用户 User antd-user': ['个人资料', '卡片', '列表', '创建', '编辑', '账户'],
+        '产品 Product antd-sketch': ['列表', '详情', '创建', '编辑'],
+        '订单 Order antd-account-book': ['列表', '详情'],
+        '发票 Invoice antd-dollar': ['列表', '详情', '创建', '编辑'],
+        '博客 Blog antd-idcard': ['列表', '详情', '创建', '编辑'],
+        '工作 Job antd-build': ['列表', '详情', '创建', '编辑'],
+        '导览 Tour antd-flag': ['列表', '详情', '创建', '编辑'],
+        '文件管理 File-Manager antd-folder-open': [],
+        '邮件 Mail antd-mail': [],
+        '聊天 Chat antd-comment': [],
+        '日历 Calendar antd-calendar': [],
+        '看板 Kanban antd-fund': []
     }
 
 
@@ -76,7 +76,7 @@ class MenuConfig:
                     'props': {
                         'key': key.split(' ')[0],
                         'title': key.split(' ')[0],
-                        'icon': '',
+                        'icon': key.split(' ')[2],
                         'href': f'/{key.split(" ")[1].lower()}'
                     }
                 }
@@ -94,15 +94,15 @@ class MenuConfig:
                 {
                     'component': 'SubMenu',
                     'props': {
-                        'key': key.split(' ')[0],
+                        'key': "管理" + key.split(' ')[0],
                         'title': key.split(' ')[0],
-                        'icon': ''
+                        'icon': key.split(' ')[2]
                     },
                     'children': [
                         {
                             'component': 'Item',
                             'props': {
-                                'key': item,
+                                'key': "管理" + key.split(' ')[0]+item,
                                 'title': item,
                                 'icon': '',
                                 'href': f'/{key.split(" ")[1].lower()}/{cn_to_en[item].lower()}' if cn_to_en.get(item) else "404"
@@ -115,9 +115,9 @@ class MenuConfig:
                 else {
                     'component': 'Item',
                     'props': {
-                        'key': key.split(' ')[0],
+                        'key': "管理" + key.split(' ')[0],
                         'title': key.split(' ')[0],
-                        'icon': '',
+                        'icon': key.split(' ')[2],
                         'href': f'/{key.split(" ")[1].lower()}'
                     }
                 }
