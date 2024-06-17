@@ -110,3 +110,23 @@
   background-color: #F6F7F8;
   border-radius: var(--menu-item-border-radius);
 }
+
+
+.ant-popover-inner {
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.5556
+}
+
+.card-note {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.57143;
+  color: #637381
+}

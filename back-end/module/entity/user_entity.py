@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from config.database import Base
 
 
-class SysUser(Base):
+class User(Base):
     """
     用户表
     """

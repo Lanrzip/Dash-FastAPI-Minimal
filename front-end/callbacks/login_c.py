@@ -1,12 +1,12 @@
 import dash
-from dash import dcc, set_props
+from dash import dcc
 import feffery_utils_components as fuc
 from dash.dependencies import Input, Output, State
 from flask import session
 
 from server import app
 from utils.common import validate_data_not_empty
-from api.login import login_api
+from api.system import login_api
 
 
 @app.callback(
@@ -72,7 +72,7 @@ def login_auth(nClicks, email, password):
                     password_form_help=None,
                     token=None,
                     redirect_container=None,
-                    global_message_container=fuc.FefferyFancyMessage('接口异常', type='error')
+                    global_message_container=fuc.FefferyFancyMessage(f'接口异常: {str(e)}', type='error')
                 )
 
         # set_props('login-email-form-item', {

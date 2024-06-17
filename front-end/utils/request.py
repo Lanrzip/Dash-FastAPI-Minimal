@@ -6,6 +6,7 @@ from config.env import AppConfig
 from config.global_config import ApiBaseUrlConfig
 from server import logger
 
+
 def api_request(method: str, url: str, is_headers: bool, params: Optional[dict] = None, data: Optional[dict] = None,
                 json: Optional[dict] = None, timeout: Optional[int] = None, stream: Optional[bool] = False):
     """
@@ -46,14 +47,14 @@ def api_request(method: str, url: str, is_headers: bool, params: Optional[dict] 
             url=api_url, params=params, data=data, json=json, headers=api_headers,
             timeout=timeout, stream=stream
         )
-        print('------------response------------', response.json())
+        # print('------------response------------', response.json())
         data_list = [params, data, json]
         if stream:
             pass
         else:
             response_code = response.json().get('code')
             response_message = response.json().get('message')
-        print('------------session------------', session.get('user_info').get('user_name') if session.get('user_info') else None)
+        # print('------------session------------', session.get('user_info').get('user_name') if session.get('user_info') else None)
         session['code'] = response_code
         session['message'] = response_message
         if response_code == 200:

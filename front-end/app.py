@@ -10,7 +10,7 @@ from store import render_store_container
 from config.env import AppConfig
 from config.global_config import RouterConfig
 
-import views
+import views.register
 
 app.layout = html.Div(
     [
@@ -30,7 +30,14 @@ app.layout = html.Div(
         # 注入全局消息提示容器
         html.Div(id='global-message-container'),
         # 注入全局通知信息容器
-        html.Div(id='global-notification-container')
+        html.Div(id='global-notification-container'),
+
+        # interval容器测试
+        dcc.Interval(
+            id='global-interval-container',
+            n_intervals=0,
+            interval=86400000  # 一天
+        )
     ]
 )
 
@@ -40,6 +47,7 @@ app.layout = html.Div(
         app_mount=Output('app-mount', 'children'),
         redirect_container=Output('redirect-container', 'children', allow_duplicate=True),
         global_message_container=Output('global-message-container', 'children', allow_duplicate=True),
+        menu_current_key=Output('current-key-container', 'data')
     ),
     inputs=dict(
         pathname=Input('url-container', 'pathname')
@@ -57,17 +65,19 @@ def router(pathname, url_trigger, session_token):
     # 若已登录
     if token_result and session_token and token_result == session_token:
         if pathname in RouterConfig.STATIC_VALID_PATHNAME:
+            current_key = pathname
             if pathname == '/':
-                current_key = '首页'
+                current_key = '/application'
             
             if url_trigger == 'load':
-                
-                if pathname == '/login' or pathname == '/forget':
+                # print('fwefewf')
+                if pathname == '/login' or pathname == '/forget' or pathname == '/':
                     # 若已登录且访问登录页面，则重定向至首页
                     return dict(
                         app_mount=dash.no_update,
-                        redirect_container=dcc.Location(pathname='/', id='router-redirect'),
-                        global_message_container=None
+                        redirect_container=dcc.Location(pathname='/application', id='router-redirect'),
+                        global_message_container=None,
+                        menu_current_key={'current_key': current_key}
                     )
 
                 # 正常渲染主页面
@@ -75,17 +85,24 @@ def router(pathname, url_trigger, session_token):
                     app_mount=views.layout.render_content(),
                     redirect_container=None,
                     global_message_container=None,
+                    menu_current_key={'current_key': current_key}
                 )
-            
+            print('segjsoiejg')
             return dict(
                 app_mount=dash.no_update,
                 redirect_container=None,
                 global_message_container=None,
+                menu_current_key={'current_key': current_key}
             )
         
         else:
             # 返回404状态页面
-            pass
+            return dict(
+                app_mount=views.page_404.render_content(),
+                redirect_container=None,
+                global_message_container=None,
+                menu_current_key=dash.no_update
+            )
 
 
     else:
@@ -98,6 +115,7 @@ def router(pathname, url_trigger, session_token):
                 app_mount=views.page_404.render_content(),
                 redirect_container=None,
                 global_message_container=None,
+                menu_current_key=dash.no_update,
             )
 
         if pathname == '/login':
@@ -105,6 +123,15 @@ def router(pathname, url_trigger, session_token):
                 app_mount=views.login.render_content(),
                 redirect_container=None,
                 global_message_container=None,
+                menu_current_key=dash.no_update,
+            )
+        
+        if pathname == '/register':
+            return dict(
+                app_mount=views.register.render_content(),
+                redirect_container=None,
+                global_message_container=None,
+                menu_current_key=dash.no_update,
             )
         
         if pathname == '/forget':
@@ -112,15 +139,14 @@ def router(pathname, url_trigger, session_token):
                 app_mount=views.forget.render_content(),
                 redirect_container=None,
                 global_message_container=None,
+                menu_current_key=dash.no_update,
             )
-            # return
-        
-        # set_props('redirect-container', {'children': dcc.Location(pathname='/login', id='router-redirect')})
-        # print("%%%%%%%%%")
+
         return dict(
             app_mount=dash.no_update,
             redirect_container=dcc.Location(pathname='/login', id='router-redirect'),
             global_message_container=None,
+            menu_current_key=dash.no_update,
         )
         
 

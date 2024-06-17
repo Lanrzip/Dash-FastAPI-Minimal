@@ -1,17 +1,16 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from module.service.login_service import *
-from module.vo.login_vo import *
-# from utils.response_utils import *
+from module.service.system.login_service import *
+from module.service.system.register_service import *
+from module.vo.system_vo import *
 from utils.db_utils import get_db
 
-import uuid
 
-loginController = APIRouter()
+systemRouter = APIRouter(prefix="/system")
 
 
-@loginController.post("/loginByAccount", response_model=Token)
+@systemRouter.post("/login", response_model=TokenOut)
 async def login(request: Request,
                 form_data: CustomOAuth2PasswordRequestForm = Depends(),
                 login_service: ILoginService = Depends(LoginService.instance),
@@ -20,9 +19,20 @@ async def login(request: Request,
     return await login_service.login(request, form_data, query_db)
 
 
-@loginController.post("/logout")
+@systemRouter.post("/logout")
 async def logout(request: Request,
                  login_service: ILoginService = Depends(LoginService.instance),
                  token: Optional[str] = Depends(oauth2_scheme)):
     # print('logout')
     return await login_service.logout(request, token)
+
+
+
+@systemRouter.post("/register")
+async def register(request: Request,
+                   register_user: RegisterUserIn,
+                   register_service: IRegisterService = Depends(RegisterService.instance),
+                   query_db: Session = Depends(get_db)):
+    print('-------- resgister controller --------')
+    
+    return await register_service.register(request, register_user, query_db)

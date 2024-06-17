@@ -4,6 +4,7 @@ import dash
 from dash import html
 
 from config.global_config import MenuConfig
+import callbacks.layout_c.aside_c
 
 
 def render_aside_content():
@@ -12,7 +13,7 @@ def render_aside_content():
         fac.AntdImage(
             src='./assets/imgs/logo.png',
             preview=False,
-            className='h-10 w-10 ml-8 mt-6 mb-2'
+            className='h-10 w-10 ml-6 mt-6 mb-2'
         ),
         fuc.FefferyScrollbars(
             fac.AntdMenu(
@@ -46,7 +47,6 @@ def render_aside_content():
                 'zIndex': 1001,
                 'top': '32px',
                 'left': '264px',
-                # 'boxShadow': '0 4px 10px 0 rgba(0,0,0,.1)',
                 'background': 'white',
                 'color': 'rgb(99, 115, 129)',
                 'padding': '4px',

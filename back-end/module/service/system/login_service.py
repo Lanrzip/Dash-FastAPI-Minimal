@@ -9,7 +9,7 @@ from abc import ABC, abstractmethod
 import uuid
 
 from config.env import JwtConfig
-from module.vo.login_vo import UserLogin
+from module.vo.system_vo import UserLogin
 from module.dao.login_dao import login_by_account
 from utils.log_utils import logger
 from utils.response_utils import LoginException
@@ -25,6 +25,8 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login/loginByAccount")
 class CustomOAuth2PasswordRequestForm(OAuth2PasswordRequestForm):
     """
     自定义OAuth2PasswordRequestForm类，增加用户邮箱
+    OAuth2 规范规定，对于密码流，应该使用表单数据（而不是 JSON）收集数据，
+    并且应该具有特定字段“用户名”和“密码”。
     """
     def __init__(
             self,
@@ -41,6 +43,7 @@ class CustomOAuth2PasswordRequestForm(OAuth2PasswordRequestForm):
 
         self.email = email
         
+
 
 class ILoginService(ABC):
     
@@ -156,6 +159,7 @@ class LoginService(ILoginService):
         to_encode.update({"exp": expire})
         encoded_jwt = jwt.encode(to_encode, JwtConfig.jwt_secret_key, algorithm=JwtConfig.jwt_algorithm)
         return encoded_jwt
+    
     
     def __init__(self, request: Request):
         pass

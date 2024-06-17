@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
 
-from module.controller.login_controller import loginController
+from module.controller.system_controller import systemRouter
 from config.env import AppConfig
 from utils.redis_utils import RedisUtil
 from utils.db_utils import init_create_table
@@ -17,7 +17,7 @@ origins = [
     "http://127.0.0.1:8088",
 ]
 
-app.include_router(loginController, prefix="/login", tags=["登录模块"])
+app.include_router(systemRouter, tags=["登录模块"])
 
 
 @app.on_event("startup")

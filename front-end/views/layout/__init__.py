@@ -1,8 +1,9 @@
 from dash import html
 import feffery_antd_components as fac
 import feffery_utils_components as fuc
-from .components.aside import render_aside_content
-from .components.head import render_head_content
+from .aside import render_aside_content
+from .head import render_head_content
+from .content import render_main_content
 
 def render_content():
     
@@ -26,7 +27,7 @@ def render_content():
                             fac.AntdAffix(
                                 html.Div(
                                     render_aside_content(),
-                                    id='side-menu-container',
+                                    id='index-side-menu-container',
                                     style={
                                         'width': '280px',
                                         'height': '100%',  # 右侧出现滚动条的情况下，设置full-screen会使滚动条抽搐
@@ -51,13 +52,7 @@ def render_content():
                                             className='min-h-20 px-10 flex items-center justify-between sticky top-0 bg-white z-1000 mb-4',
                                         ),
                                         html.Div(
-                                            html.Div(
-                                                '右侧内容区',
-                                            ),
-                                            id='docs-content',
-                                            style={
-                                                'backgroundColor': 'rgb(255, 255, 255)'
-                                            }
+                                            render_main_content()
                                         )
                                     ],
                                     # className='flex flex-col h-screen'
@@ -71,7 +66,7 @@ def render_content():
                     # className='flex flex-row min-w-full'
                 )
             ],
-            id='index-main-content-container',
+            # id='index-main-content-container',
         )
     )
 

@@ -112,3 +112,12 @@ class LoginException(Exception):
     def __init__(self, data: str = None, message: str = None):
         self.data = data
         self.message = message
+
+
+class RegisterException(Exception):
+    """
+    自定义注册异常RegisterException
+    """
+    def __init__(self, data: str = None, message: str = None):
+        self.data = data
+        self.message = message
