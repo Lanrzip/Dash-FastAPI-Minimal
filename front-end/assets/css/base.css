@@ -35,7 +35,7 @@
 /* menu */
 .ant-menu {
   font-weight: 600;
-  color: #637381;
+  color: var(--palette-text-secondary);
   padding: 12px;
 }
 
@@ -50,16 +50,16 @@
 }
 
 .ant-menu-item a {
-  color: #637381;
+  color: var(--palette-text-secondary);
 }
 
 .ant-menu-item a:hover {
-  color: #637381;
+  color: var(--palette-text-secondary);
 }
 
 /* submenu */
 .ant-menu-submenu.ant-menu-submenu-inline span:hover {
-  color: #637381;
+  color: var(--palette-text-secondary);
 }
 
 /* hover */
@@ -74,7 +74,7 @@
 }
 
 .ant-menu-item:hover .ant-menu-item-icon {
-  color:#637381;
+  color:var(--palette-text-secondary);
 }
 
 /* clicked */
@@ -128,5 +128,201 @@
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.57143;
-  color: #637381
+  color: var(--palette-text-secondary)
+}
+
+
+.card-with-title {
+  background-color: #FFFFFF;
+  box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+:root {
+  --palette-mode: light;
+  --palette-primary-lighter: #C8FAD6;
+  --palette-primary-light: #5BE49B;
+  --palette-primary-main: #00A76F;
+  --palette-primary-dark: #007867;
+  --palette-primary-darker: #004B50;
+  --palette-primary-contrastText: #FFFFFF;
+  --palette-primary-lighterChannel: 200 250 214;
+  --palette-primary-lightChannel: 91 228 155;
+  --palette-primary-mainChannel: 0 167 111;
+  --palette-primary-darkChannel: 0 120 103;
+  --palette-primary-darkerChannel: 0 75 80;
+  --palette-primary-contrastTextChannel: 255 255 255;
+  --palette-secondary-lighter: #EFD6FF;
+  --palette-secondary-light: #C684FF;
+  --palette-secondary-main: #8E33FF;
+  --palette-secondary-dark: #5119B7;
+  --palette-secondary-darker: #27097A;
+  --palette-secondary-contrastText: #FFFFFF;
+  --palette-secondary-lighterChannel: 239 214 255;
+  --palette-secondary-lightChannel: 198 132 255;
+  --palette-secondary-mainChannel: 142 51 255;
+  --palette-secondary-darkChannel: 81 25 183;
+  --palette-secondary-darkerChannel: 39 9 122;
+  --palette-secondary-contrastTextChannel: 255 255 255;
+  --palette-info-lighter: #CAFDF5;
+  --palette-info-light: #61F3F3;
+  --palette-info-main: #00B8D9;
+  --palette-info-dark: #006C9C;
+  --palette-info-darker: #003768;
+  --palette-info-contrastText: #FFFFFF;
+  --palette-info-lighterChannel: 202 253 245;
+  --palette-info-lightChannel: 97 243 243;
+  --palette-info-mainChannel: 0 184 217;
+  --palette-info-darkChannel: 0 108 156;
+  --palette-info-darkerChannel: 0 55 104;
+  --palette-info-contrastTextChannel: 255 255 255;
+  --palette-success-lighter: #D3FCD2;
+  --palette-success-light: #77ED8B;
+  --palette-success-main: #22C55E;
+  --palette-success-dark: #118D57;
+  --palette-success-darker: #065E49;
+  --palette-success-contrastText: #ffffff;
+  --palette-success-lighterChannel: 211 252 210;
+  --palette-success-lightChannel: 119 237 139;
+  --palette-success-mainChannel: 34 197 94;
+  --palette-success-darkChannel: 17 141 87;
+  --palette-success-darkerChannel: 6 94 73;
+  --palette-success-contrastTextChannel: 255 255 255;
+  --palette-warning-lighter: #FFF5CC;
+  --palette-warning-light: #FFD666;
+  --palette-warning-main: #FFAB00;
+  --palette-warning-dark: #B76E00;
+  --palette-warning-darker: #7A4100;
+  --palette-warning-contrastText: #1C252E;
+  --palette-warning-lighterChannel: 255 245 204;
+  --palette-warning-lightChannel: 255 214 102;
+  --palette-warning-mainChannel: 255 171 0;
+  --palette-warning-darkChannel: 183 110 0;
+  --palette-warning-darkerChannel: 122 65 0;
+  --palette-warning-contrastTextChannel: 28 37 46;
+  --palette-error-lighter: #FFE9D5;
+  --palette-error-light: #FFAC82;
+  --palette-error-main: #FF5630;
+  --palette-error-dark: #B71D18;
+  --palette-error-darker: #7A0916;
+  --palette-error-contrastText: #FFFFFF;
+  --palette-error-lighterChannel: 255 233 213;
+  --palette-error-lightChannel: 255 172 130;
+  --palette-error-mainChannel: 255 86 48;
+  --palette-error-darkChannel: 183 29 24;
+  --palette-error-darkerChannel: 122 9 22;
+  --palette-error-contrastTextChannel: 255 255 255;
+  --palette-grey-50: #FCFDFD;
+  --palette-grey-100: #F9FAFB;
+  --palette-grey-200: #F4F6F8;
+  --palette-grey-300: #DFE3E8;
+  --palette-grey-400: #C4CDD5;
+  --palette-grey-500: #919EAB;
+  --palette-grey-600: #637381;
+  --palette-grey-700: #454F5B;
+  --palette-grey-800: #1C252E;
+  --palette-grey-900: #141A21;
+  --palette-grey-50Channel: 252 253 253;
+  --palette-grey-100Channel: 249 250 251;
+  --palette-grey-200Channel: 244 246 248;
+  --palette-grey-300Channel: 223 227 232;
+  --palette-grey-400Channel: 196 205 213;
+  --palette-grey-500Channel: 145 158 171;
+  --palette-grey-600Channel: 99 115 129;
+  --palette-grey-700Channel: 69 79 91;
+  --palette-grey-800Channel: 28 37 46;
+  --palette-grey-900Channel: 20 26 33;
+  --palette-common-black: #000000;
+  --palette-common-white: #FFFFFF;
+  --palette-common-blackChannel: 0 0 0;
+  --palette-common-whiteChannel: 255 255 255;
+  --palette-common-background: #fff;
+  --palette-common-onBackground: #000;
+  --palette-common-backgroundChannel: 255 255 255;
+  --palette-common-onBackgroundChannel: 0 0 0;
+  --palette-divider: rgba(145 158 171 / 0.2);
+  --palette-action-hover: rgba(145 158 171 / 0.08);
+  --palette-action-selected: rgba(145 158 171 / 0.16);
+  --palette-action-focus: rgba(145 158 171 / 0.24);
+  --palette-action-disabled: rgba(145 158 171 / 0.8);
+  --palette-action-disabledBackground: rgba(145 158 171 / 0.24);
+  --palette-action-hoverOpacity: 0.08;
+  --palette-action-disabledOpacity: 0.48;
+  --palette-action-active: #637381;
+  --palette-action-selectedOpacity: 0.08;
+  --palette-action-focusOpacity: 0.12;
+  --palette-action-activatedOpacity: 0.12;
+  --palette-action-activeChannel: 99 115 129;
+  --palette-action-selectedChannel: 145;
+  --palette-text-primary: #1C252E;
+  --palette-text-secondary: #637381;
+  --palette-text-disabled: #919EAB;
+  --palette-text-primaryChannel: 28 37 46;
+  --palette-text-secondaryChannel: 99 115 129;
+  --palette-text-disabledChannel: 145 158 171;
+  --palette-background-paper: #FFFFFF;
+  --palette-background-default: #FFFFFF;
+  --palette-background-neutral: #F4F6F8;
+  --palette-background-paperChannel: 255 255 255;
+  --palette-background-defaultChannel: 255 255 255;
+  --palette-background-neutralChannel: 244 246 248;
+  --palette-Alert-errorColor: rgb(102, 68, 52);
+  --palette-Alert-infoColor: rgb(38, 97, 97);
+  --palette-Alert-successColor: rgb(47, 94, 55);
+  --palette-Alert-warningColor: rgb(102, 85, 40);
+  --palette-Alert-errorFilledBg: var(--palette-error-main, #FF5630);
+  --palette-Alert-infoFilledBg: var(--palette-info-main, #00B8D9);
+  --palette-Alert-successFilledBg: var(--palette-success-main, #22C55E);
+  --palette-Alert-warningFilledBg: var(--palette-warning-main, #FFAB00);
+  --palette-Alert-errorFilledColor: #fff;
+  --palette-Alert-infoFilledColor: rgba(0, 0, 0, 0.87);
+  --palette-Alert-successFilledColor: rgba(0, 0, 0, 0.87);
+  --palette-Alert-warningFilledColor: rgba(0, 0, 0, 0.87);
+  --palette-Alert-errorStandardBg: rgb(255, 246, 242);
+  --palette-Alert-infoStandardBg: rgb(239, 253, 253);
+  --palette-Alert-successStandardBg: rgb(241, 253, 243);
+  --palette-Alert-warningStandardBg: rgb(255, 250, 239);
+  --palette-Alert-errorIconColor: var(--palette-error-main, #FF5630);
+  --palette-Alert-infoIconColor: var(--palette-info-main, #00B8D9);
+  --palette-Alert-successIconColor: var(--palette-success-main, #22C55E);
+  --palette-Alert-warningIconColor: var(--palette-warning-main, #FFAB00);
+  --palette-AppBar-defaultBg: var(--palette-grey-100, #F9FAFB);
+  --palette-Avatar-defaultBg: var(--palette-grey-400, #C4CDD5);
+  --palette-Button-inheritContainedBg: var(--palette-grey-300, #DFE3E8);
+  --palette-Button-inheritContainedHoverBg: var(--palette-grey-A100, #f5f5f5);
+  --palette-Chip-defaultBorder: var(--palette-grey-400, #C4CDD5);
+  --palette-Chip-defaultAvatarColor: var(--palette-grey-700, #454F5B);
+  --palette-Chip-defaultIconColor: var(--palette-grey-700, #454F5B);
+  --palette-FilledInput-bg: rgba(0, 0, 0, 0.06);
+  --palette-FilledInput-hoverBg: rgba(0, 0, 0, 0.09);
+  --palette-FilledInput-disabledBg: rgba(0, 0, 0, 0.12);
+  --palette-LinearProgress-primaryBg: rgb(158, 221, 200);
+  --palette-LinearProgress-secondaryBg: rgb(212, 177, 255);
+  --palette-LinearProgress-errorBg: rgb(255, 190, 176);
+  --palette-LinearProgress-infoBg: rgb(158, 228, 240);
+  --palette-LinearProgress-successBg: rgb(171, 232, 193);
+  --palette-LinearProgress-warningBg: rgb(255, 223, 158);
+  --palette-Skeleton-bg: rgba(var(--palette-text-primaryChannel, 28 37 46) / 0.11);
+  --palette-Slider-primaryTrack: rgb(158, 221, 200);
+  --palette-Slider-secondaryTrack: rgb(212, 177, 255);
+  --palette-Slider-errorTrack: rgb(255, 190, 176);
+  --palette-Slider-infoTrack: rgb(158, 228, 240);
+  --palette-Slider-successTrack: rgb(171, 232, 193);
+  --palette-Slider-warningTrack: rgb(255, 223, 158);
+  --palette-SnackbarContent-bg: rgb(50, 50, 50);
+  --palette-SnackbarContent-color: #fff;
+  --palette-SpeedDialAction-fabHoverBg: rgb(216, 216, 216);
+  --palette-StepConnector-border: var(--palette-grey-400, #C4CDD5);
+  --palette-StepContent-border: var(--palette-grey-400, #C4CDD5);
+  --palette-Switch-defaultColor: var(--palette-common-white, #FFFFFF);
+  --palette-Switch-defaultDisabledColor: var(--palette-grey-100, #F9FAFB);
+  --palette-Switch-primaryDisabledColor: rgb(158, 221, 200);
+  --palette-Switch-secondaryDisabledColor: rgb(212, 177, 255);
+  --palette-Switch-errorDisabledColor: rgb(255, 190, 176);
+  --palette-Switch-infoDisabledColor: rgb(158, 228, 240);
+  --palette-Switch-successDisabledColor: rgb(171, 232, 193);
+  --palette-Switch-warningDisabledColor: rgb(255, 223, 158);
 }

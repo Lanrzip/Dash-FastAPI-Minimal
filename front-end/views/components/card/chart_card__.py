@@ -3,15 +3,12 @@ from dash import html, dcc
 from dash.dependencies import ClientsideFunction, Output, Input
 import feffery_antd_components as fac
 
-from server import app
-
 
 def render_card(
         type,
         idx,
         title=None,
         note=None,
-        chart=None,
         grid_row=None,
         grid_col=None,
         height='500px',
@@ -19,12 +16,8 @@ def render_card(
 ):
     style = {
         'backgroundColor': '#FFFFFF',
-        'transition': 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-        'overflow': 'hidden',
-        'position': 'relative',
         'boxShadow': 'rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px',
         'borderRadius': '16px',
-        'zIndex': '0',
         'display': 'flex',
         'flexDirection': 'column',
         'padding': '24px',
@@ -44,7 +37,7 @@ def render_card(
             ),
             html.Span(
                 note,
-                className='card-note mt-1'
+                className='card-note'
             )
         ],
         style={
@@ -56,12 +49,6 @@ def render_card(
 
     upper_layout = html.Div(
             [
-            dcc.Store(
-                id={
-                    'type': f'{type}-chart-data',
-                    'index': idx
-                },
-            ),
             html.Div(
                     [
                         upper_title_note,
@@ -107,6 +94,13 @@ def render_card(
     return html.Div(
         [
             upper_layout,
+            
+            dcc.Store(
+                id={
+                    'type': f'{type}-chart-data',
+                    'index': idx
+                },
+            ),
             chart_container
         ],
         style=style

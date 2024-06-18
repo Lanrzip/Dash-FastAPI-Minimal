@@ -1,4 +1,3 @@
-import dash
 from dash import html
 import feffery_antd_components as fac
 import feffery_utils_components as fuc
@@ -143,19 +142,20 @@ def render_card(
                             ),
                             fuc.FefferyStyle(
                                 rawStyle='''
-.ant-table-thead {
-    display: none;
-}
-.ant-pagination {
-    display: none;
-}
-'''
+                                    .indicator-card .ant-table-thead {
+                                        display: none;
+                                    }
+                                    .indicator-card .ant-pagination {
+                                        display: none;
+                                    }
+                                '''
                             )
                         ],
                         style={
                             'width': '100px',
                             'height': '100%',
-                        }
+                        },
+                        className='indicator-card'
                     )
                 ),
             ],

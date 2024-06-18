@@ -2,7 +2,7 @@ import dash
 from dash import html
 import feffery_antd_components as fac
 
-from views.components import indicator_card, chart_card
+from views.components import indicator_card, chart_card, table_card, tab_card
 import callbacks.views_c.application_c
 
 
@@ -178,18 +178,41 @@ def render_content():
                 idx='下载量',
                 title="下载量",
                 note="通过操作系统下载",
-                grid_row='3/5'
+                style={
+                    'padding': '24px',
+                    'height': '500px'
+                }
             ),
             chart_card.render_card(
                 type='application-chart-card-bar',
                 idx='区域下载量',
                 title="区域下载量",
                 note="(+43%) 比去年",
-                grid_row='3/5',
-                grid_col='2/4',
-                with_select=True
+                with_select=True,
+                style={
+                    'padding': '24px',
+                    'height': '500px',
+                    'gridColumn': '2/4'
+                }
+            ),
+            table_card.render_card(
+                type='application-table-card',
+                idx='新发票',
+                title='新发票',
+                style={
+                    'height': '540px',
+                    'gridColumn': '1/3'
+                }
+            ),
+            tab_card.render_card(
+                type='application-tab-card',
+                idx='相关应用',
+                title='相关应用',
+                style={
+                    'height': '540px',
+                    'gridColumn': '3/4'
+                }
             )
-
         ],
         style={
             'display': 'grid',
