@@ -11,6 +11,9 @@ module.exports = {
     extend: {
       flexGrow: {
         1: 1,
+      },
+      zIndex: {
+        1000: 1000,
       }
     },
   },

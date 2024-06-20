@@ -49,7 +49,11 @@ def render_content():
                                     [
                                         html.Div(
                                             render_head_content(),
-                                            className='min-h-20 px-10 flex items-center justify-between sticky top-0 bg-white z-1000 mb-4',
+                                            className='min-h-20 px-10 flex items-center justify-between sticky top-0 z-1000 mb-4',
+                                            style={
+                                                'backdropFilter': 'blur(10px)',
+                                                'backgroundColor': 'rgba(var(--palette-background-defaultChannel) / 0.8)'
+                                            },
                                         ),
                                         html.Div(
                                             render_main_content()

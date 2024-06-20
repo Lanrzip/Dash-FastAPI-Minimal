@@ -45,7 +45,7 @@ def render_head_content():
                                 'paddingRight': '8px',
                                 'borderRadius': '12px',
                                 'cursor': 'pointer',
-                                'backgroundColor': '#F6F7F8',
+                                'backgroundColor': 'rgba(var(--palette-grey-500Channel) / 0.08)',
                                 'marginTop': '8px',
                                 'display': 'flex',
                                 'alignItems': 'center',
@@ -143,7 +143,7 @@ def render_head_content():
         align='middle',
         style={
             'width': '100%',
-            'backgroundColor': 'rgba(255, 255, 255, 0.8)',
+            # 'backgroundColor': 'rgba(255, 255, 255, 0.8)',
         },
         wrap=False
     )

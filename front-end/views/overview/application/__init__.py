@@ -3,6 +3,7 @@ from dash import html
 import feffery_antd_components as fac
 
 from views.components import indicator_card, chart_card, table_card, tab_card
+from . import top_installed_countries, top_authors, bottom_right_card
 import callbacks.views_c.application_c
 
 
@@ -134,7 +135,7 @@ def render_content():
                         'gap': '8px',
                         'padding': '24px',
                         'bottom': '0px',
-                        'zIndex': '9',
+                        # 'zIndex': '9',
                         'textAlign': 'left',
                         'position': 'absolute',
                         'color': 'rgb(255, 255, 255)'
@@ -212,6 +213,20 @@ def render_content():
                     'height': '540px',
                     'gridColumn': '3/4'
                 }
+            ),
+            top_installed_countries.render_card(),
+            top_authors.render_card(),
+            bottom_right_card.render_card(
+                value=38566,
+                percent=48,
+                note='转换',
+                theme='primary'
+            ),
+            bottom_right_card.render_card(
+                value=55566,
+                percent=75,
+                note='应用',
+                theme='info'
             )
         ],
         style={
