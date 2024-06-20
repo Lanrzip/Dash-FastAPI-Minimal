@@ -124,7 +124,7 @@
   line-height: 1.5556
 }
 
-.card-note {
+.card-subtitle {
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.57143;
@@ -132,7 +132,7 @@
 }
 
 
-.card-with-title {
+.title-card {
   background-color: #FFFFFF;
   box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
   border-radius: 16px;
@@ -140,6 +140,14 @@
   flex-direction: column;
 }
 
+.indicator-card {
+  background-color: #FFFFFF;
+  box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  padding: 24px;
+}
 
 :root {
   --palette-mode: light;

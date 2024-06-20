@@ -2,181 +2,148 @@ import dash
 from dash import html
 import feffery_antd_components as fac
 
-from views.components.card import card_with_title
+from views.components.card import title_card
 
 
-def render_card():
+def render_box(item):
 
-    country_list = [
-        {
-            'name': 'Germany',
-            'icon': 'https://raw.githubusercontent.com/demo-minimal/public-assets/main/public/assets/icons/flagpack/de.webp',
-            'android': 9911,
-            'windows': 1947,
-            'apple': 9124
-        },
-        {
-            'name': 'England',
-            'icon': 'https://raw.githubusercontent.com/demo-minimal/public-assets/main/public/assets/icons/flagpack/gb.webp',
-            'android': 1947,
-            'windows': 9124,
-            'apple': 6984
-        },
-        {
-            'name': 'France',
-            'icon': 'https://raw.githubusercontent.com/demo-minimal/public-assets/main/public/assets/icons/flagpack/fr.webp',
-            'android': 9124,
-            'windows': 6984,
-            'apple': 8488
-        },
-        {
-            'name': 'Korean',
-            'icon': 'https://raw.githubusercontent.com/demo-minimal/public-assets/main/public/assets/icons/flagpack/kr.webp',
-            'android': 6984,
-            'windows': 8488,
-            'apple': 9911
-        },
-        {
-            'name': 'USA',
-            'icon': 'https://raw.githubusercontent.com/demo-minimal/public-assets/main/public/assets/icons/flagpack/us.webp',
-            'android': 8488,
-            'windows': 9911,
-            'apple': 1947
-        },
-        {
-            'name': 'Japan',
-            'icon': 'https://raw.githubusercontent.com/demo-minimal/public-assets/main/public/assets/icons/flagpack/jp.webp',
-            'android': 8488,
-            'windows': 9911,
-            'apple': 1947
-        },
-        {
-            'name': 'Russia',
-            'icon': 'https://raw.githubusercontent.com/demo-minimal/public-assets/main/public/assets/icons/flagpack/ru.webp',
-            'android': 8488,
-            'windows': 9911,
-            'apple': 1947
-        }
-    ]
-
-
-    layout = html.Div(
+    return html.Div(
         [
             html.Div(
                 [
-                    html.Div(
-                        [
-                            fac.AntdImage(
-                                src=item.get('icon'),
-                                preview=False,
-                                height=20,
-                                width=26,
-                                style={
-                                    'borderRadius': '5px'
-                                }
-                            ),
-                            html.Span(
-                                item.get('name'),
-                                style={
-                                    'fontWeight': '700',
-                                    'fontSize': '0.875rem',
-                                    'lineHeight': '1.57',
-                                    'textOverflow': 'ellipsis',
-                                    'whiteSpace': 'nowrap',
-                                }
-                            )
-                        ],
+                    fac.AntdImage(
+                        src=item.get('icon'),
+                        preview=False,
+                        height=20,
+                        width=26,
                         style={
-                            'display': 'flex',
-                            'alignItems': 'center',
-                            'gap': '8px',
-                            'minWidth': '120px',
-                        }
+                            'borderRadius': '5px'
+                        },
+                        id='application-top-installed-country-icon'
                     ),
-                    html.Div(
-                        [
-                            fac.AntdImage(
-                                src='assets/imgs/operation-system/android.png',
-                                preview=False,
-                                height=14,
-                                width=14
-                            ),
-                            item.get('android')
-                        ],
+                    html.Span(
+                        item.get('name'),
                         style={
-                            'display': 'flex',
-                            'alignItems': 'center',
-                            'gap': '4px',
-                            'minWidth': '80px',
+                            'fontWeight': '700',
                             'fontSize': '0.875rem',
-                            'fontWeight': '400',
                             'lineHeight': '1.57',
-                        }
-                    ),
-                    html.Div(
-                        [
-                            fac.AntdImage(
-                                src='assets/imgs/operation-system/android.png',
-                                preview=False,
-                                height=14,
-                                width=14
-                            ),
-                            item.get('windows')
-                        ],
-                        style={
-                            'display': 'flex',
-                            'alignItems': 'center',
-                            'gap': '4px',
-                            'minWidth': '80px',
-                            'fontSize': '0.875rem',
-                            'fontWeight': '400',
-                            'lineHeight': '1.57',
-                        }
-                    ),
-                    html.Div(
-                        [
-                            fac.AntdImage(
-                                src='assets/imgs/operation-system/android.png',
-                                preview=False,
-                                height=14,
-                                width=14
-                            ),
-                            item.get('apple')
-                        ],
-                        style={
-                            'display': 'flex',
-                            'alignItems': 'center',
-                            'gap': '4px',
-                            'minWidth': '80px',
-                            'fontSize': '0.875rem',
-                            'fontWeight': '400',
-                            'lineHeight': '1.57',
-                        }
+                            'textOverflow': 'ellipsis',
+                            'whiteSpace': 'nowrap',
+                        },
+                        id='application-top-installed-country-name'
                     )
                 ],
                 style={
                     'display': 'flex',
                     'alignItems': 'center',
-                    'gap': '16px',
-                    'height': '100%'
+                    'gap': '8px',
+                    'minWidth': '120px',
+                }
+            ),
+            html.Div(
+                [
+                    fac.AntdImage(
+                        src='assets/imgs/operation-system/android.png',
+                        preview=False,
+                        height=14,
+                        width=14,
+                    ),
+                    html.Span(
+                        item.get('android'),
+                        id='application-top-installed-country-android'
+                    )
+                ],
+                style={
+                    'display': 'flex',
+                    'alignItems': 'center',
+                    'gap': '4px',
+                    'minWidth': '80px',
+                    'fontSize': '0.875rem',
+                    'fontWeight': '400',
+                    'lineHeight': '1.57',
+                }
+            ),
+            html.Div(
+                [
+                    fac.AntdImage(
+                        src='assets/imgs/operation-system/windows.png',
+                        preview=False,
+                        height=14,
+                        width=14
+                    ),
+                    html.Span(
+                        item.get('windows'),
+                        id='application-top-installed-country-windows'
+                    )
+                ],
+                style={
+                    'display': 'flex',
+                    'alignItems': 'center',
+                    'gap': '4px',
+                    'minWidth': '80px',
+                    'fontSize': '0.875rem',
+                    'fontWeight': '400',
+                    'lineHeight': '1.57',
+                }
+            ),
+            html.Div(
+                [
+                    fac.AntdImage(
+                        src='assets/imgs/operation-system/apple.png',
+                        preview=False,
+                        height=14,
+                        width=14
+                    ),
+                    html.Span(
+                        item.get('apple'),
+                        id='application-top-installed-country-apple'
+                    )
+                ],
+                style={
+                    'display': 'flex',
+                    'alignItems': 'center',
+                    'gap': '4px',
+                    'minWidth': '80px',
+                    'fontSize': '0.875rem',
+                    'fontWeight': '400',
+                    'lineHeight': '1.57',
                 }
             )
-            for item in country_list
         ],
+        style={
+            'display': 'flex',
+            'alignItems': 'center',
+            'gap': '16px',
+            'height': '100%'
+        }
+    )
+
+
+def render_layout(
+    type=None,
+    idx=None,
+    style={}
+):
+
+
+
+    layout = html.Div(
         style={
             'display': 'flex',
             'flexDirection': 'column',
             'gap': '24px',
             'padding': '0 24px 24px 24px',
             'overflow': 'auto'
+        },
+        id={
+            'type': type,
+            'index': idx
         }
     )
 
-    return card_with_title(
+    return title_card.render_card(
         title="安装最多的国家",
         children=layout,
-        style={
-            'gridRow': '5/7',
-            # 'height': '306px'
-        }
+        style=style,
+        title_padding='24px'
     )

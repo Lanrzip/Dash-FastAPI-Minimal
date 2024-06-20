@@ -3,35 +3,12 @@ import feffery_antd_components as fac
 import feffery_utils_components as fuc
 
 
-def render_card(
+def render_layout(
         type,
         idx,
         title=None,
-        value=None,
-        note=None,
-        grid_row=None,
-        grid_col=None,
-        height='162px',
+        style={},
 ):
-    style = {
-        'backgroundColor': '#FFFFFF',
-        'transition': 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-        'overflow': 'hidden',
-        'position': 'relative',
-        'boxShadow': 'rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px',
-        'borderRadius': '16px',
-        'zIndex': '0',
-        'display': 'flex',
-        'alignItems': 'center',
-        'padding': '24px',
-    }
-    if grid_row is not None:
-        style['gridRow'] = grid_row
-    if grid_col is not None:
-        style['gridColumn'] = grid_col
-    if height is not None:
-        style['height'] = height
-
     
     return html.Div(
         fac.AntdRow(
@@ -48,7 +25,6 @@ def render_card(
                                 className='card-title',
                             ),
                             html.Div(
-                                value,
                                 id={
                                     'type': f'{type}-value',
                                     'index': idx
@@ -64,20 +40,18 @@ def render_card(
                             html.Div(
                                 [
                                     fac.AntdIcon(
-                                        icon=f'antd-{note[0]}',
                                         id={
                                             'type': f'{type}-note-icon',
                                             'index': idx
                                         },
                                         style={
-                                            'color': '#22C55E' if note[0] == 'rise' else '#FF5630',
+                                            # 'color': '#22C55E',
                                             'width': '24px',
                                             'height': '24px',
                                             'marginTop': '4px'
                                         }
                                     ),
                                     html.Span(
-                                        note[1],
                                         id={
                                             'type': f'{type}-note-value',
                                             'index': idx
@@ -89,7 +63,6 @@ def render_card(
                                         }
                                     ),
                                     html.Span(
-                                        note[2],
                                         id={
                                             'type': f'{type}-note-text',
                                             'index': idx
@@ -120,7 +93,7 @@ def render_card(
                                 columns=[
                                     {
                                         'title': '',
-                                        'dataIndex': 'mini-bar示例1',
+                                        'dataIndex': 'indicator-mini-chart',
                                         'renderOptions': {
                                             'renderType': 'mini-bar'
                                         },
@@ -129,7 +102,7 @@ def render_card(
                                 ],
                                 data=[
                                     {
-                                        'mini-bar示例1': [
+                                        'indicator-mini-chart': [
                                             3,4,5,5,1,2,3,5,6,3,2
                                         ],
                                     }
@@ -155,7 +128,6 @@ def render_card(
                             'width': '100px',
                             'height': '100%',
                         },
-                        className='indicator-card'
                     )
                 ),
             ],
@@ -163,5 +135,6 @@ def render_card(
             align='middle',
             style={'width': '100%'}
         ),
-        style=style
+        style=style,
+        className='indicator-card'
     )

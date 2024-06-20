@@ -2,10 +2,17 @@ import dash
 from dash import html
 import feffery_antd_components as fac
 
-from views.components import indicator_card, chart_card, table_card, tab_card
-from . import top_installed_countries, top_authors, bottom_right_card
-import callbacks.views_c.application_c
+from views.components.card import indicator_card, progress_card
+from . import (
+    current_download,
+    area_installed,
+    top_installed_countries,
+    new_invoice,
+    related_applications,
+    top_authors,
+)
 
+import callbacks.views_c.application_c
 
 def render_content():
     return html.Div(
@@ -153,50 +160,50 @@ def render_content():
                     'backgroundSize': 'cover',  # 防止背景图像重复
                 }
             ),
-            indicator_card.render_card(
+            indicator_card.render_layout(
                 type='application-indicator-card',
                 idx='活跃用户',
                 title='活跃用户',
-                value='18765',
-                note=['rise', '+2.6%', '比上周'],
+                style={
+                    'height':'162px'
+                }
             ),
-            indicator_card.render_card(
+            indicator_card.render_layout(
                 type='application-indicator-card',
                 idx='安装次数',
                 title='安装次数',
-                value='4876',
-                note=['rise', '+0.2%', '比上周'],
+                style={
+                    'height':'162px'
+                }
             ),
-            indicator_card.render_card(
+            indicator_card.render_layout(
                 type='application-indicator-card',
                 idx='下载次数',
                 title='下载次数',
-                value='678',
-                note=['fall', '-0.1%', '比上周'],
+                style={
+                    'height':'162px'
+                }
             ),
-            chart_card.render_card(
+            current_download.render_layout(
                 type='application-chart-card-donut',
                 idx='下载量',
                 title="下载量",
-                note="通过操作系统下载",
+                subtitle="通过操作系统下载",
                 style={
-                    'padding': '24px',
                     'height': '500px'
                 }
             ),
-            chart_card.render_card(
+            area_installed.render_layout(
                 type='application-chart-card-bar',
                 idx='区域下载量',
                 title="区域下载量",
-                note="(+43%) 比去年",
-                with_select=True,
+                subtitle="(+43%) 比去年",
                 style={
-                    'padding': '24px',
                     'height': '500px',
                     'gridColumn': '2/4'
                 }
             ),
-            table_card.render_card(
+            new_invoice.render_layout(
                 type='application-table-card',
                 idx='新发票',
                 title='新发票',
@@ -205,7 +212,7 @@ def render_content():
                     'gridColumn': '1/3'
                 }
             ),
-            tab_card.render_card(
+            related_applications.render_layout(
                 type='application-tab-card',
                 idx='相关应用',
                 title='相关应用',
@@ -214,15 +221,27 @@ def render_content():
                     'gridColumn': '3/4'
                 }
             ),
-            top_installed_countries.render_card(),
-            top_authors.render_card(),
-            bottom_right_card.render_card(
+            top_installed_countries.render_layout(
+                type='application-top-country',
+                idx='安装最多的国家',
+                style={
+                    'gridRow': '5/7',
+                }
+            ),
+            top_authors.render_layout(
+                type='application-top-author',
+                idx='最佳作者',
+                style={
+                    'gridRow': '5/7',
+                }
+            ),
+            progress_card.render_card(
                 value=38566,
                 percent=48,
                 note='转换',
                 theme='primary'
             ),
-            bottom_right_card.render_card(
+            progress_card.render_card(
                 value=55566,
                 percent=75,
                 note='应用',
