@@ -1,3 +1,8 @@
+def format_currency(amount):
+    return f"{amount:,}"
+
+
+
 def validate_data_not_empty(input_data):
     """
     工具方法：根据输入数据校验数据是否不为None和''

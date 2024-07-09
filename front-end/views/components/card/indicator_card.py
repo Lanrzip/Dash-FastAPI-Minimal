@@ -101,13 +101,13 @@ def render_layout(
                                         'width': '50%'
                                     },
                                 ],
-                                data=[
-                                    {
-                                        'indicator-mini-chart': [
-                                            3,4,5,5,1,2,3,5,6,3,2
-                                        ],
-                                    }
-                                ],
+                                # data=[
+                                #     {
+                                #         'indicator-mini-chart': [
+                                #             3,4,5,5,1,2,3,5,6,3,2
+                                #         ],
+                                #     }
+                                # ],
                                 bordered=False,
                                 id={
                                     'type': f'{type}-chart',

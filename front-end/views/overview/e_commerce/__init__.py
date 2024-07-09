@@ -5,7 +5,8 @@ import feffery_antd_components as fac
 from views.components.card import indicator_card
 from . import (
     sale_by_gender,
-    yearly_sales
+    yearly_sales,
+    sales_overview
 )
 import callbacks.views_c.e_commerce_c
 
@@ -211,6 +212,15 @@ def render_content():
                 style={
                     'height': '500px',
                     'gridColumn': '2/4'
+                }
+            ),
+            sales_overview.render_layout(
+                type='e-commerce-progress-card',
+                idx='销售概览',
+                title="销售概览",
+                style={
+                    'height': '320px',
+                    'gridColumn': '1/3'
                 }
             )
         ],

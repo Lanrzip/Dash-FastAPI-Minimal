@@ -211,9 +211,9 @@ window.dash_clientside = Object.assign({}, window.dash_clientside, {
               trigger: 'item',
               formatter: function (params) {
                 var totalValue = params.value;
-                var label = params.name;
+                var label = params.seriesName;
                 var graphic = option.graphic.children[0];
-                graphic.style.text = `{total|${label}}\n{value|` + totalValue/4*100 + '%' + '}';
+                graphic.style.text = `{total|${label}}\n{value|` + (totalValue/4*100).toFixed(0) + '%' + '}';
                 myChart.setOption(option);
               }
             },

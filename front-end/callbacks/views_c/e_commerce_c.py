@@ -3,6 +3,7 @@ from dash import html
 from dash.dependencies import Output, Input, State, MATCH, ALL, ClientsideFunction
 
 from server import app
+from utils.common import format_currency
 
 
 # 指标卡数据回调测试------------- 待完成 -----------------
@@ -178,3 +179,35 @@ def update_chart_card_area_chart_data(year):
     }
     return year_value_dict[year]
 
+
+
+# 销售概览Progress回调
+@app.callback(
+    [
+        Output({'type': 'e-commerce-progress-card-progress-box-value', 'index': MATCH}, 'children'),
+        Output({'type': 'e-commerce-progress-card-progress-box-progress', 'index': MATCH}, 'percent')
+    ],
+    Input('global-interval-container', 'n_intervals'),
+    State({'type': 'e-commerce-progress-card-progress-box-title', 'index': MATCH}, 'children'),
+    # prevent_initial_call=True
+)
+def update_progress_card_progress_box(global_interval, progress_box_title):
+    # return get_progress_card_progress()  # 接口形式
+    sales_over_progress_data = {
+        '总利润': {
+            'value': '￥' + format_currency(8374),
+            'percent': 10.1
+        },
+        '总收入': {
+            'value': '￥' + format_currency(9714),
+            'percent': 13.6
+        },
+        '总支出': {
+            'value': '￥' + format_currency(6871),
+            'percent': 28.2
+        }
+    }
+    return [
+        sales_over_progress_data[progress_box_title]['value'],
+        sales_over_progress_data[progress_box_title]['percent'],
+    ]
