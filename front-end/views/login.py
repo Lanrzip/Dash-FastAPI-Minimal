@@ -54,7 +54,7 @@ def render_layout_right():
         [
             html.Div(
                 [
-                    html.P('登录至Mnimal', className="text-xl font-bold text-left"),
+                    html.P('登录至Minimal', className="text-xl font-bold text-left"),
                     html.Div(
                         [
                             html.P("新用户？"),

@@ -1,3 +1,4 @@
+from random import randint
 from dash import html
 from dash.dependencies import Output, Input, State, MATCH, ALL, ClientsideFunction
 
@@ -14,6 +15,7 @@ from server import app
         indicator_card_note_icon=Output({'type': 'application-indicator-card-note-icon', 'index': MATCH}, 'icon'),
         indicator_card_note_style=Output({'type': 'application-indicator-card-note-icon', 'index': MATCH}, 'style'),
         indicator_card_note_text=Output({'type': 'application-indicator-card-note-text', 'index': MATCH}, 'children'),
+        indicator_card_chart_data=Output({'type': 'application-indicator-card-chart', 'index': MATCH}, 'data'),
     ),
     inputs=dict(
         global_interval=Input('global-interval-container', 'n_intervals'),
@@ -36,6 +38,13 @@ def update_indicator_card(global_interval, indicator_card_title):
                 'height': '24px',
                 'marginTop': '4px'
             },
+            'chart_data': [
+                {
+                    'indicator-mini-chart': [
+                        randint(1, 10) for _ in range(11)
+                    ],
+                }
+            ]
         },
         '安装次数': {
             'value': '4876',
@@ -47,6 +56,13 @@ def update_indicator_card(global_interval, indicator_card_title):
                 'height': '24px',
                 'marginTop': '4px'
             },
+            'chart_data': [
+                {
+                    'indicator-mini-chart': [
+                        randint(1, 10) for _ in range(11)
+                    ],
+                }
+            ]
         },
         '下载次数': {
             'value': '678',
@@ -58,6 +74,13 @@ def update_indicator_card(global_interval, indicator_card_title):
                 'height': '24px',
                 'marginTop': '4px'
             },
+            'chart_data': [
+                {
+                    'indicator-mini-chart': [
+                        randint(1, 10) for _ in range(11)
+                    ],
+                }
+            ]
         },
     }
     return dict(
@@ -65,7 +88,8 @@ def update_indicator_card(global_interval, indicator_card_title):
         indicator_card_note_value=item_dict[indicator_card_title]['note-value'],
         indicator_card_note_icon=item_dict[indicator_card_title]['note-icon'],
         indicator_card_note_style=item_dict[indicator_card_title]['note-style'],
-        indicator_card_note_text='较上月'
+        indicator_card_note_text='较上月',
+        indicator_card_chart_data=item_dict[indicator_card_title]['chart_data']
     )
 
 
@@ -461,35 +485,35 @@ def update_top_author_data(n_intervals):
     author_list = [
         {
             'name': '张三',
-            'avatar': 'https://api-prod-minimal-v6.vercel.app/assets/images/avatar/avatar-1.webp',
+            'avatar': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-1.webp',
             'favorite': 9911,
             'bgc': 'rgba(var(--palette-primary-mainChannel) / 0.08)',
             'color': 'var(--palette-primary-main)'
         },
         {
             'name': '李四',
-            'avatar': 'https://api-prod-minimal-v6.vercel.app/assets/images/avatar/avatar-3.webp',
+            'avatar': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-2.webp',
             'favorite': 9124,
             'bgc': 'rgba(var(--palette-info-mainChannel) / 0.08)',
             'color': 'var(--palette-info-main)'
         },
         {
             'name': '王五',
-            'avatar': 'https://api-prod-minimal-v6.vercel.app/assets/images/avatar/avatar-2.webp',
+            'avatar': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-3.webp',
             'favorite': 8798,
             'bgc': 'rgba(var(--palette-error-mainChannel) / 0.08)',
             'color': 'var(--palette-error-main)'
         },
         {
             'name': '赵六',
-            'avatar': 'https://api-prod-minimal-v6.vercel.app/assets/images/avatar/avatar-4.webp',
+            'avatar': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-4.webp',
             'favorite': 6674,
             'bgc': 'rgba(var(--palette-secondary-mainChannel) / 0.08)',
             'color': 'var(--palette-secondary-main)'
         },
         {
             'name': '林七',
-            'avatar': 'https://api-prod-minimal-v6.vercel.app/assets/images/avatar/avatar-5.webp',
+            'avatar': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-5.webp',
             'favorite': 3320,
             'bgc': 'rgba(var(--palette-warning-mainChannel) / 0.08)',
             'color': 'var(--palette-warning-main)'

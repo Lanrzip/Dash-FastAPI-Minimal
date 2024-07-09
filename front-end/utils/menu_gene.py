@@ -6,6 +6,7 @@ cn_to_en = {
     '列表': 'List',
     '创建': 'Create',
     '编辑': 'Edit',
+    '详情': 'Detail',
     '账户': 'Account'
 }
 

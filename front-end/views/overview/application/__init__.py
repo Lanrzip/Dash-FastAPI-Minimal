@@ -25,7 +25,7 @@ def render_content():
                                 fac.AntdText(
                                     '欢迎回来👋 \n张三',
                                     style={
-                                        'color': '#012972',
+                                        'color': '#FFFFFF',
                                         'fontSize': '1.5rem',
                                         'fontWeight': '700',
                                         'lineHeight': '1.5',
@@ -36,7 +36,7 @@ def render_content():
                                 fac.AntdText(
                                     "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything.",
                                     style={
-                                        'color': '#012972',
+                                        'color': '#FFFFFF',
                                         'marginBottom': '40px',
                                         'lineHeight': '1.57',
                                         'fontSize': '0.875rem',
@@ -47,10 +47,12 @@ def render_content():
                                 ),
                                 fac.AntdButton(
                                     '出发',
+                                    id='application-start-button',
                                     type='primary',
                                     style={
                                         'fontSize': '0.875rem',
                                         'fontWeight': '700',
+                                        'backgroundColor': '#00A76F',
                                     }
                                 ),
                             ],
@@ -67,19 +69,32 @@ def render_content():
                     ),
                     fac.AntdCol(
                         html.Div(
-                            fac.AntdImage(
-                                src='./assets/imgs/dashboard.png',
-                                preview=False,
-                                height=200,
-                                width=260
-                            ),
+                            [
+                                fac.AntdImage(
+                                    src='./assets/imgs/application/dashboard.png',
+                                    preview=False,
+                                    height=150,
+                                ),
+                                html.Div(
+                                    fac.AntdImage(
+                                        src='./assets/imgs/application/character.webp',
+                                        preview=False,
+                                        height=160,
+                                    ),
+                                    style={
+                                        'position': 'absolute',
+                                        'right': '30px',
+                                    }
+                                )
+                            ],
                             style={
                                 'height': '100%',
                                 'width': '100%',
                                 'padding': '24px',
                                 'display': 'flex',
                                 'justifyContent': 'center',
-                                'alignItems': 'center'
+                                'alignItems': 'center',
+                                'position': 'relative'
                             }
                         ),
                         flex='2'
@@ -87,7 +102,7 @@ def render_content():
                 ],
                 wrap=False,
                 style={
-                    'backgroundColor': '#DAF0FD',
+                    'backgroundColor': '#141A21',
                     'borderRadius': '16px',
                     'height': '100%',
                     'gridColumn': '1/3',
@@ -132,7 +147,7 @@ def render_content():
                                 'whiteSpace': 'nowrap',
                                 'color': 'rgb(255, 255, 255)'
                             }
-                        )
+                        ),
                     ],
                     style={
                         'width': '100%',
@@ -164,6 +179,7 @@ def render_content():
                 type='application-indicator-card',
                 idx='活跃用户',
                 title='活跃用户',
+                chart_type='mini-bar',
                 style={
                     'height':'162px'
                 }
@@ -172,6 +188,7 @@ def render_content():
                 type='application-indicator-card',
                 idx='安装次数',
                 title='安装次数',
+                chart_type='mini-bar',
                 style={
                     'height':'162px'
                 }
@@ -180,6 +197,7 @@ def render_content():
                 type='application-indicator-card',
                 idx='下载次数',
                 title='下载次数',
+                chart_type='mini-bar',
                 style={
                     'height':'162px'
                 }

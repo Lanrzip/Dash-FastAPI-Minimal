@@ -8,7 +8,8 @@ from flask import session
 from server import app
 from store import render_store_container
 from config.env import AppConfig
-from config.global_config import RouterConfig
+from config.global_config import RouterConfig, MenuConfig
+from utils.common import generate_shortcut_panel_data
 
 import views.register
 
@@ -37,6 +38,23 @@ app.layout = html.Div(
             id='global-interval-container',
             n_intervals=0,
             interval=86400000  # 一天
+        ),
+
+        # 快捷指令面板
+        fuc.FefferyShortcutPanel(
+            openHotkey='cmd+k,ctrl+k',
+            data=generate_shortcut_panel_data(MenuConfig.menuItems)
+            # [
+            #     {
+            #         'id': '应用 App',
+            #         'title': '应用 App',
+            #         'handler': '''() => {
+            #             window.location = "/application"
+            #         }
+            #         ''',
+            #         'section': '概览'
+            #     }
+            # ]
         )
     ]
 )
@@ -64,6 +82,7 @@ def router(pathname, url_trigger, session_token):
     # print('app.py--router:  ', token_result, session_token)
     # 若已登录
     if token_result and session_token and token_result == session_token:
+        # 根据pathname控制渲染行为
         if pathname in RouterConfig.STATIC_VALID_PATHNAME:
             current_key = pathname
             if pathname == '/':
@@ -109,7 +128,7 @@ def router(pathname, url_trigger, session_token):
         # 若未登录
         # 根据pathname控制渲染行为
         # 检验pathname合法性
-        if pathname not in RouterConfig.BASIC_VALID_PATHNAME:
+        if pathname not in RouterConfig.STATIC_VALID_PATHNAME:
             # 返回404状态页面
             return dict(
                 app_mount=views.page_404.render_content(),

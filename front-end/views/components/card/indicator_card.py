@@ -6,6 +6,7 @@ import feffery_utils_components as fuc
 def render_layout(
         type,
         idx,
+        chart_type,
         title=None,
         style={},
 ):
@@ -95,7 +96,7 @@ def render_layout(
                                         'title': '',
                                         'dataIndex': 'indicator-mini-chart',
                                         'renderOptions': {
-                                            'renderType': 'mini-bar'
+                                            'renderType': chart_type
                                         },
                                         'width': '50%'
                                     },

@@ -4,6 +4,7 @@ import feffery_utils_components as fuc
 from .aside import render_aside_content
 from .head import render_head_content
 from .content import render_main_content
+from .user_info_drawer import render_drawer_layout
 
 def render_content():
     
@@ -16,6 +17,8 @@ def render_content():
                 html.Div(id='idle-placeholder-container'),  # 空闲占位符
 
 
+                # 用户信息抽屉
+                render_drawer_layout(),
                 # 各种弹窗
 
 
@@ -71,7 +74,11 @@ def render_content():
                 )
             ],
             # id='index-main-content-container',
-        )
+        ),
+        listenPropsMode='include',
+        includeProps=[
+            'main-content-container.children'
+        ]
     )
 
 

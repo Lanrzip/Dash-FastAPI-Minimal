@@ -15,9 +15,10 @@ class UserIn(BaseModel):
 
 
     class Config:
-        # 默认情况下，Pydantic 模型只接受字典形式的数据。通过启用 orm_mode，
+        # 默认情况下，Pydantic 模型只接受字典形式的数据。通过启用 from_attributes,
         # Pydantic 模型可以直接从 ORM 模型实例中读取数据，而不需要将其显式转换为字典。
-        orm_mode = True
+        # 调用方法：UserIn.from_orm(user)
+        from_attributes = True
 
 
 # class CrudUserResponseOut(BaseModel):

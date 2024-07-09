@@ -11,9 +11,9 @@ from utils.response_utils import *
 
 class IRegisterService(ABC):
         
-        @abstractmethod
-        async def register(self, request: Request, register_user_in: RegisterUserIn, query_db: Session):
-            pass
+    @abstractmethod
+    async def register(self, request: Request, register_user_in: RegisterUserIn, query_db: Session):
+        pass
 
 
 class RegisterService(IRegisterService):
