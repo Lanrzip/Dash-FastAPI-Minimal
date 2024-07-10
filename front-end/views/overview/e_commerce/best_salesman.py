@@ -23,22 +23,6 @@ def render_layout(
                     'index': idx
                 },
             ),
-            html.Div(
-                fac.AntdButton(
-                    '查看全部 >',
-                    type='text',
-                    href='/invoice/list',
-                    style={
-                        'fontSize': '0.8125rem',
-                        'fontWeight': '700',
-                        'borderRadius': '8px',
-                    }
-                ),
-                style={
-                    'padding': '16px',
-                    'textAlign': 'right'
-                }
-            ),
             fuc.FefferyStyle(
                 rawStyle='''
                     .table-card .ant-table-thead>tr>th {

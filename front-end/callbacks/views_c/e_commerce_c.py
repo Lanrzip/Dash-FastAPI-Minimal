@@ -1,6 +1,7 @@
 from random import randint
 from dash import html
 from dash.dependencies import Output, Input, State, MATCH, ALL, ClientsideFunction
+import feffery_antd_components as fac
 
 from server import app
 from utils.common import format_currency
@@ -211,3 +212,149 @@ def update_progress_card_progress_box(global_interval, progress_box_title):
         sales_over_progress_data[progress_box_title]['value'],
         sales_over_progress_data[progress_box_title]['percent'],
     ]
+
+
+# 当前余额回调
+@app.callback(
+    Output({'type': 'e-commerce-current-balance-card-item-value', 'index': MATCH}, 'children'),
+    Input('global-interval-container', 'n_intervals'),
+    State({'type': 'e-commerce-current-balance-card-item-title', 'index': MATCH}, 'children'),
+)
+def update_current_balance_card_line(global_interval, item_title):
+    # return get_current_balance_card_line()  # 接口形式
+    current_balance_data = {
+        '合计订单': '￥' + format_currency(287650),
+        '盈利': '￥' + format_currency(25500),
+        '已退款': '￥' + format_currency(1600),
+        '当前余额': '￥' + format_currency(187650),
+    }
+    return current_balance_data[item_title]
+
+
+
+# 最佳销售table-card获取数据回调测试------------- 待完成 -----------------
+@app.callback(
+    [
+        Output({'type': 'e-commerce-table-card-table', 'index': '最佳销售'}, 'columns'),
+        Output({'type': 'e-commerce-table-card-table', 'index': '最佳销售'}, 'data'),
+    ],
+    Input('global-interval-container', 'n_intervals')
+)
+def update_best_salesman_table_card_data(n_intervals):
+    # print('update_table_card_data')
+    columns = [
+        {
+            'title': '销售',
+            'dataIndex': '销售',
+        },
+        {
+            'title': '产品',
+            'dataIndex': '产品'
+        },
+        {
+            'title': '国家',
+            'dataIndex': '国家'
+        },
+        {
+            'title': '总计',
+            'dataIndex': '总计'
+        },
+        {
+            'title': '排名',
+            'dataIndex': '排名',
+            'renderOptions': {
+                'renderType': 'tags'
+            }
+        },
+    ]
+
+    best_salesman_items = [
+        {
+            'avatar': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-1.webp',
+            'name': '张三',
+            'product': 'CAP',
+            'flag': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/public/assets/icons/flagpack/de.webp',
+            'total': '¥83.74',
+            'rank_color': 'green'
+        },
+        {
+            'avatar': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-2.webp',
+            'name': '李四',
+            'product': 'T-shirt',
+            'flag': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/public/assets/icons/flagpack/us.webp',
+            'total': '¥75.14',
+            'rank_color': 'purple'
+        },
+        {
+            'avatar': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-3.webp',
+            'name': '王五',
+            'product': 'Shoes',
+            'flag': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/public/assets/icons/flagpack/jp.webp',
+            'total': '¥67.14',
+            'rank_color': 'blue'
+        },
+        {
+            'avatar': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-4.webp',
+            'name': '赵六',
+            'product': 'Pants',
+            'flag': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/public/assets/icons/flagpack/kr.webp',
+            'total': '¥65.14',
+            'rank_color': 'orange'
+        },
+        {
+            'avatar': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-5.webp',
+            'name': '钱七',
+            'product': 'Socks',
+            'flag': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/public/assets/icons/flagpack/au.webp',
+            'total': '¥63.14',
+            'rank_color': 'red'
+        }
+    ]
+
+    data = [
+        {
+            '销售': html.Div(
+                [
+                    fac.AntdAvatar(
+                        mode='image',
+                        src=item['avatar'],
+                        size=40,
+                    ),
+                    item['name']
+                ],
+                style={
+                    'display': 'flex',
+                    'alignItems': 'center',
+                    'gap': '8px',
+                    'fontSize': '0.875rem',
+                    'fontWeight': 400,
+                    'lineHeight': '1.57',
+                    'color': 'var(--palette-text-primary)',
+                    'paddingLeft': '8px'
+                }
+            ),
+            '产品': item['product'],
+            '国家': html.Div(
+                fac.AntdImage(
+                    src=item['flag'],
+                    height=20,
+                    width=26,
+                    preview=False,
+                    style={'borderRadius': '5px'}
+                ),
+                style={
+                    'display': 'flex',
+                    'alignItems': 'center',
+                    'justifyContent': 'center',
+                }
+            ),
+            '总计': item['total'],
+            '排名': {
+                'tag': f'Top {i}',
+                'color': item['rank_color']
+            }
+        }
+        for i, item in enumerate(best_salesman_items, start=1)
+    ]
+
+    return [columns, data]

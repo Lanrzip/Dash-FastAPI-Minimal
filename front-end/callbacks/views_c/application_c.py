@@ -271,11 +271,35 @@ def update_chart_card_bar_chart_data(year):
 
 # table-card获取数据回调测试------------- 待完成 -----------------
 @app.callback(
-    Output({'type': 'application-table-card', 'index': '新发票'}, 'data'),
+    [
+        Output({'type': 'application-table-card-table', 'index': '新发票'}, 'columns'),
+        Output({'type': 'application-table-card-table', 'index': '新发票'}, 'data'),
+    ],
     Input('global-interval-container', 'n_intervals')
 )
 def update_table_card_data(n_intervals):
     # print('update_table_card_data')
+    columns = [
+        {
+            'title': '发票ID',
+            'dataIndex': '发票ID',
+        },
+        {
+            'title': '类别',
+            'dataIndex': '类别'
+        },
+        {
+            'title': '金额',
+            'dataIndex': '金额'
+        },
+        {
+            'title': '状态',
+            'dataIndex': '状态',
+            'renderOptions': {
+                'renderType': 'tags'
+            }
+        },
+    ]
     data = [
 
         {
@@ -325,7 +349,7 @@ def update_table_card_data(n_intervals):
         },
     ]
 
-    return data
+    return [columns, data]
 
 
 # tab-card获取数据回调测试------------- 待完成 -----------------

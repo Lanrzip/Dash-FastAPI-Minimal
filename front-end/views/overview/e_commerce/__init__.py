@@ -6,7 +6,9 @@ from views.components.card import indicator_card
 from . import (
     sale_by_gender,
     yearly_sales,
-    sales_overview
+    sales_overview,
+    current_balance,
+    best_salesman
 )
 import callbacks.views_c.e_commerce_c
 
@@ -48,7 +50,9 @@ def render_content():
                                     style={
                                         'fontSize': '0.875rem',
                                         'fontWeight': '700',
-                                        'backgroundColor': '#00A76F',
+                                        'backgroundColor': 'var(--palette-primary-main)',
+                                        'borderColor': 'var(--palette-primary-main)',
+                                        'borderRadius': '8px',
                                     }
                                 ),
                             ],
@@ -135,7 +139,9 @@ def render_content():
                             '购买',
                             type='primary',
                             style={
-                                'backgroundColor': '#00A76F',
+                                'backgroundColor': 'var(--palette-primary-main)',
+                                'borderColor': 'var(--palette-primary-main)',
+                                'borderRadius': '8px',
                                 'fontWeight': '700',
                                 'fontSize': '0.875rem',
                                 'marginTop': '16px',
@@ -220,6 +226,23 @@ def render_content():
                 title="销售概览",
                 style={
                     'height': '320px',
+                    'gridColumn': '1/3'
+                }
+            ),
+            current_balance.render_layout(
+                type='e-commerce-current-balance-card',
+                title="当前余额",
+                style={
+                    'height': '320px',
+                    'gridColumn': '3/4'
+                }
+            ),
+            best_salesman.render_layout(
+                type='e-commerce-table-card',
+                idx='最佳销售',
+                title='最佳销售',
+                style={
+                    # 'height': '540px',
                     'gridColumn': '1/3'
                 }
             )

@@ -52,7 +52,9 @@ def render_content():
                                     style={
                                         'fontSize': '0.875rem',
                                         'fontWeight': '700',
-                                        'backgroundColor': '#00A76F',
+                                        'backgroundColor': 'var(--palette-primary-main)',
+                                        'borderColor': 'var(--palette-primary-main)',
+                                        'borderRadius': '8px',
                                     }
                                 ),
                             ],
