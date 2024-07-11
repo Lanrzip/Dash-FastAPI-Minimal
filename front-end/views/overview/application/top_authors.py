@@ -1,4 +1,3 @@
-import dash
 from dash import html
 import feffery_antd_components as fac
 
@@ -79,6 +78,7 @@ def render_box(item):
 
 
 def render_layout(
+    title,
     type=None,
     idx=None,
     style={}
@@ -98,7 +98,7 @@ def render_layout(
     )
 
     return title_card.render_card(
-        title="最佳作者",
+        title=title,
         children=layout,
         style=style,
         title_padding='24px'

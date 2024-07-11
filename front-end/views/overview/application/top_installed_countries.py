@@ -120,8 +120,9 @@ def render_box(item):
 
 
 def render_layout(
-    type=None,
-    idx=None,
+    type,
+    idx,
+    title=None,
     style={}
 ):
 
@@ -142,7 +143,7 @@ def render_layout(
     )
 
     return title_card.render_card(
-        title="安装最多的国家",
+        title=title,
         children=layout,
         style=style,
         title_padding='24px'

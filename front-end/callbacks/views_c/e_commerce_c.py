@@ -5,6 +5,7 @@ import feffery_antd_components as fac
 
 from server import app
 from utils.common import format_currency
+from views.overview.e_commerce import latest_products
 
 
 # 指标卡数据回调测试------------- 待完成 -----------------
@@ -358,3 +359,79 @@ def update_best_salesman_table_card_data(n_intervals):
     ]
 
     return [columns, data]
+
+
+
+# 最新产品获取数据回调测试------------- 待完成 -----------------
+@app.callback(
+    Output({'type': 'e-commerce-latest-products-card', 'index': '最新产品'}, 'children'),
+    Input('global-interval-container', 'n_intervals')
+)
+def update_top_author_data(n_intervals):
+    author_list = [
+        {
+            'product_img_url': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/m-product/product-1.webp',
+            'product_name': '城市探险家运动鞋',
+            'product_price': fac.AntdText('¥83.74'),
+            'product_tags': [
+                '#d29200',
+                '#ffb900',
+                '#fff100',
+                '#d83b01',
+                '#ea4300',
+            ]
+        },
+        {
+            'product_img_url': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/m-product/product-2.webp',
+            'product_name': '经典皮革乐福鞋',
+            'product_price': [
+                fac.AntdText('¥97.14', strikethrough=True),
+                fac.AntdText('¥75.14', type='danger')
+            ],
+            'product_tags': [
+                '#0052cc',
+                '#2684ff',
+                '#b3d4ff',
+            ]
+        },
+        {
+            'product_img_url': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/m-product/product-3.webp',
+            'product_name': '山地徒步靴',
+            'product_price': '¥67.14',
+            'product_tags': [
+                '#172b4d',
+                '#4b6584',
+                '#a3b1bf',
+            ]
+        },
+        {
+            'product_img_url': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/m-product/product-4.webp',
+            'product_name': '优雅细高跟鞋',
+            'product_price': [
+                fac.AntdText('¥85.21', strikethrough=True),
+                fac.AntdText('¥65.21', type='danger')
+            ],
+            'product_tags': [
+                '#c92a2a',
+                '#e55353',
+                '#f68787',
+                '#f6a9a9',
+                '#f9c7c7',
+            ]
+        },
+        {
+            'product_img_url': 'https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/m-product/product-5.webp',
+            'product_name': '舒适的跑鞋',
+            'product_price': '¥63.14',
+            'product_tags': [
+                '#00c2b2',
+                '#00e5d8',
+            ]
+        }
+        
+    ]
+
+    return [
+        latest_products.render_box(item)
+        for item in author_list
+    ]

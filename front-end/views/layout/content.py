@@ -8,4 +8,7 @@ import callbacks.layout_c.content_c
 def render_main_content():
     return html.Div(
         id='main-content-container',
+        style={
+            'minWidth': '1200px'
+        }
     )

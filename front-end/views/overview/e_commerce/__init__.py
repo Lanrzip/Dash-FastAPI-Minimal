@@ -8,7 +8,8 @@ from . import (
     yearly_sales,
     sales_overview,
     current_balance,
-    best_salesman
+    best_salesman,
+    latest_products
 )
 import callbacks.views_c.e_commerce_c
 
@@ -244,6 +245,13 @@ def render_content():
                 style={
                     # 'height': '540px',
                     'gridColumn': '1/3'
+                }
+            ),
+            latest_products.render_layout(
+                type='e-commerce-latest-products-card',
+                idx='最新产品',
+                title='最新产品',
+                style={
                 }
             )
         ],

@@ -426,7 +426,7 @@ def update_tab_card_data(n_intervals):
             'key': '历史最佳',
             'label': '历史最佳',
             'children': html.Div(
-                '',
+                '历史最佳',
                 className='tab-item-container'
             )
         }
@@ -438,7 +438,7 @@ def update_tab_card_data(n_intervals):
 
 # top-installed-country获取数据回调测试------------- 待完成 -----------------
 @app.callback(
-    Output({'type': 'application-top-country', 'index': '安装最多的国家'}, 'children'),
+    Output({'type': 'application-top-country-card', 'index': '安装最多的国家'}, 'children'),
     Input('global-interval-container', 'n_intervals')
 )
 def update_top_installed_country_data(n_intervals):
@@ -502,7 +502,7 @@ def update_top_installed_country_data(n_intervals):
 
 # top-author获取数据回调测试------------- 待完成 -----------------
 @app.callback(
-    Output({'type': 'application-top-author', 'index': '最佳作者'}, 'children'),
+    Output({'type': 'application-top-author-card', 'index': '最佳作者'}, 'children'),
     Input('global-interval-container', 'n_intervals')
 )
 def update_top_author_data(n_intervals):

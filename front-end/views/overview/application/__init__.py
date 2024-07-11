@@ -242,15 +242,17 @@ def render_content():
                 }
             ),
             top_installed_countries.render_layout(
-                type='application-top-country',
+                type='application-top-country-card',
                 idx='安装最多的国家',
+                title='安装最多的国家',
                 style={
                     'gridRow': '5/7',
                 }
             ),
             top_authors.render_layout(
-                type='application-top-author',
+                type='application-top-author-card',
                 idx='最佳作者',
+                title='最佳作者',
                 style={
                     'gridRow': '5/7',
                 }

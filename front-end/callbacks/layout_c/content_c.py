@@ -18,5 +18,7 @@ def handle_side_menu_change(current_key):
     if current_key == '/e-commerce':
         return e_commerce.render_content()
         
+    if current_key == '/analytics':
+        return analytics.render_content()
     
     return '404'
