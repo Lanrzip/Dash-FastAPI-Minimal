@@ -1,5 +1,5 @@
 import dash
-from dash import html, dcc, set_props
+from dash import html, dcc
 from dash.dependencies import Input, Output, State
 import feffery_antd_components as fac
 import feffery_utils_components as fuc
@@ -36,7 +36,7 @@ app.layout = html.Div(
         # interval容器测试
         dcc.Interval(
             id='global-interval-container',
-            n_intervals=0,
+            n_intervals=1,
             interval=86400000  # 一天
         ),
 
@@ -106,7 +106,6 @@ def router(pathname, url_trigger, session_token):
                     global_message_container=None,
                     menu_current_key={'current_key': current_key}
                 )
-            print('segjsoiejg')
             return dict(
                 app_mount=dash.no_update,
                 redirect_container=None,

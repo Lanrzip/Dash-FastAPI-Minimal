@@ -1,5 +1,6 @@
 from . import (
     application,
     e_commerce,
-    analytics
+    analytics,
+    banking
 )

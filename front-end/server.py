@@ -11,6 +11,11 @@ app = dash.Dash(
     compress=True,
     suppress_callback_exceptions=True,
     update_title=None,
+    # external_stylesheets=[
+    #     "./css/base.css",
+    #     "./css/out.css",
+    # ],
+    serve_locally=True,
     # external_scripts=[
     #     # "https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js",
     #     # "node/node_modules/@material-tailwind/html/scripts/ripple.js"

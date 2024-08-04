@@ -13,6 +13,84 @@ from . import (
 )
 import callbacks.views_c.e_commerce_c
 
+
+def render_carsousel(
+    tag,
+    title,
+    img_url,
+    index
+):
+    
+    return html.Div(
+                html.Div(
+                    [
+                        fac.AntdText(
+                            tag,
+                            style = {
+                                'fontWeight': '700',
+                                'lineHeight': '1.5',
+                                'fontSize': '0.95rem',
+                                'color': 'rgba(104, 205, 249, 0.48)'
+                            }
+
+                        ),
+                        fac.AntdText(
+                            title,
+                            style = {
+                                'fontWeight': '700',
+                                'lineHeight': '1.5',
+                                'fontSize': '1.125rem',
+                                'overflow': 'hidden',
+                                'textOverflow': 'ellipsis',
+                                'whiteSpace': 'nowrap',
+                                'color': 'rgb(255, 255, 255)'
+                            }
+                        ),
+                        fac.AntdButton(
+                            '购买',
+                            id={
+                                'type': 'e-commerce-carousel-card-buy-button',
+                                'index': index
+                            },
+                            type='primary',
+                            style={
+                                'backgroundColor': 'var(--palette-primary-main)',
+                                'borderColor': 'var(--palette-primary-main)',
+                                'borderRadius': '8px',
+                                'fontWeight': '700',
+                                'fontSize': '0.875rem',
+                                'marginTop': '16px',
+                                'width': '80px'
+                            }
+                        ),
+                    ],
+                    style={
+                        'width': '100%',
+                        'overflow': 'hidden',
+                        'display': 'flex',
+                        'flexDirection': 'column',
+                        'gap': '8px',
+                        'padding': '24px',
+                        'bottom': '0px',
+                        # 'zIndex': '9',
+                        'textAlign': 'left',
+                        'position': 'absolute',
+                        'color': 'rgb(255, 255, 255)'
+                    }
+                ),
+                style={
+                    'height': '320px',
+                    'borderRadius': '16px',
+                    'position': 'relative',
+                    'backgroundImage': (
+                        'linear-gradient(to bottom, rgba(0, 0, 0, 0) -20%, rgba(0, 0, 0, 1) 100%), '
+                        'url({})'.format(img_url)
+                    ),
+                    'backgroundRepeat': 'no-repeat',  # 确保背景图像覆盖整个元素
+                    'backgroundSize': 'cover',  # 防止背景图像重复
+                }
+            )
+
 def render_content():
     return html.Div(
         [
@@ -111,70 +189,35 @@ def render_content():
                     # 'minWidth': '520px'
                 }
             ),
-            html.Div(
-                html.Div(
-                    [
-                        fac.AntdText(
-                            'NEW',
-                            style = {
-                                'fontWeight': '700',
-                                'lineHeight': '1.5',
-                                'fontSize': '0.95rem',
-                                'color': 'rgba(104, 205, 249, 0.48)'
-                            }
-
-                        ),
-                        fac.AntdText(
-                            'Urban Explorer Sneakers',
-                            style = {
-                                'fontWeight': '700',
-                                'lineHeight': '1.5',
-                                'fontSize': '1.125rem',
-                                'overflow': 'hidden',
-                                'textOverflow': 'ellipsis',
-                                'whiteSpace': 'nowrap',
-                                'color': 'rgb(255, 255, 255)'
-                            }
-                        ),
-                        fac.AntdButton(
-                            '购买',
-                            type='primary',
-                            style={
-                                'backgroundColor': 'var(--palette-primary-main)',
-                                'borderColor': 'var(--palette-primary-main)',
-                                'borderRadius': '8px',
-                                'fontWeight': '700',
-                                'fontSize': '0.875rem',
-                                'marginTop': '16px',
-                                'width': '80px'
-                            }
-                        ),
-                    ],
-                    style={
-                        'width': '100%',
-                        'overflow': 'hidden',
-                        'display': 'flex',
-                        'flexDirection': 'column',
-                        'gap': '8px',
-                        'padding': '24px',
-                        'bottom': '0px',
-                        # 'zIndex': '9',
-                        'textAlign': 'left',
-                        'position': 'absolute',
-                        'color': 'rgb(255, 255, 255)'
-                    }
-                ),
-                style={
-                    'height': '320px',
-                    'borderRadius': '16px',
-                    'position': 'relative',
-                    'backgroundImage': (
-                        'linear-gradient(to bottom, rgba(0, 0, 0, 0) -20%, rgba(0, 0, 0, 1) 100%), '
-                        'url({})'.format(dash.get_asset_url('imgs/e-commerce/product-1.webp'))
+            fac.AntdCarousel(
+                [
+                    render_carsousel(
+                        tag='新品',
+                        title='城市探险家运动鞋',
+                        img_url='https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/m-product/product-1.webp',
+                        index=0
                     ),
-                    'backgroundRepeat': 'no-repeat',  # 确保背景图像覆盖整个元素
-                    'backgroundSize': 'cover',  # 防止背景图像重复
-                }
+                    render_carsousel(
+                        tag='新品',
+                        title='经典皮革乐福鞋',
+                        img_url='https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/m-product/product-2.webp',
+                        index=1
+                    ),
+                    render_carsousel(
+                        tag='新品',
+                        title='山地徒步靴',
+                        img_url='https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/m-product/product-3.webp',
+                        index=2
+                    ),
+                    render_carsousel(
+                        tag='新品',
+                        title='优雅细高跟鞋',
+                        img_url='https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/m-product/product-4.webp',
+                        index=3
+                    ),
+                ],
+                dotPosition='top',
+                autoplay=True,
             ),
             indicator_card.render_layout(
                 type='e-commerce-indicator-card',

@@ -1,5 +1,5 @@
 import dash
-from dash import dcc, set_props
+from dash import dcc
 import feffery_utils_components as fuc
 from dash.dependencies import Input, Output, State
 from flask import session

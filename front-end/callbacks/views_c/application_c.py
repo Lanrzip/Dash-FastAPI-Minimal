@@ -1,4 +1,3 @@
-from random import randint
 from dash import html
 from dash.dependencies import Output, Input, State, MATCH, ALL, ClientsideFunction
 
@@ -26,7 +25,7 @@ from server import app
     # prevent_initial_call=True
 )
 def update_indicator_card(global_interval, indicator_card_title):
-
+    from random import randint
     item_dict = {
         '活跃用户': {
             'value': '18765',

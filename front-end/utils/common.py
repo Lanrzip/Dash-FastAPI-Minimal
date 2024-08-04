@@ -2,6 +2,26 @@ def format_currency(amount):
     return f"{amount:,}"
 
 
+def css_to_dash_style(css):
+    import re
+
+    # Initialize the style dictionary
+    style_dict = {}
+    
+    # Define a regex pattern for CSS properties
+    pattern = re.compile(r'([a-zA-Z-]+)\s*:\s*([^;]+);?')
+    
+    # Process the CSS string
+    matches = pattern.findall(css)
+    
+    for match in matches:
+        property_name, value = match
+        # Convert the CSS property name to camelCase
+        property_name = re.sub(r'-(.)', lambda x: x.group(1).upper(), property_name)
+        style_dict[property_name] = value.strip()
+    
+    return style_dict
+
 
 def validate_data_not_empty(input_data):
     """

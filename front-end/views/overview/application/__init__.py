@@ -14,6 +14,80 @@ from . import (
 
 import callbacks.views_c.application_c
 
+
+def render_carsousel(
+    tag,
+    title,
+    description,
+    image_url
+):
+
+    return html.Div(
+        html.Div(
+            [
+                fac.AntdText(
+                    tag,
+                    style = {
+                        'fontWeight': '700',
+                        'lineHeight': '1.5',
+                        'fontSize': '0.95rem',
+                        'color': 'rgb(104, 205, 249)'
+                    }
+
+                ),
+                fac.AntdText(
+                    title,
+                    style = {
+                        'fontWeight': '700',
+                        'lineHeight': '1.5',
+                        'fontSize': '1.125rem',
+                        'overflow': 'hidden',
+                        'textOverflow': 'ellipsis',
+                        'whiteSpace': 'nowrap',
+                        'color': 'rgb(255, 255, 255)'
+                    }
+                ),
+                fac.AntdText(
+                    description,
+                    style = {
+                        'margin': '0px',
+                        'lineHeight': '1.57143',
+                        'fontSize': '0.875rem',
+                        'fontWeight': '400',
+                        'overflow': 'hidden',
+                        'textOverflow': 'ellipsis',  # 超出省略
+                        'whiteSpace': 'nowrap',
+                        'color': 'rgb(255, 255, 255)'
+                    }
+                ),
+            ],
+            style={
+                'width': '100%',
+                'overflow': 'hidden',
+                'display': 'flex',
+                'flexDirection': 'column',
+                'gap': '8px',
+                'padding': '24px',
+                'bottom': '0px',
+                # 'zIndex': '9',
+                'textAlign': 'left',
+                'position': 'absolute',
+                'color': 'rgb(255, 255, 255)'
+            }
+        ),
+        style={
+            'height': '320px',
+            'borderRadius': '16px',
+            'position': 'relative',
+            'backgroundImage': (
+                'linear-gradient(to bottom, rgba(0, 0, 0, 0) -20%, rgba(0, 0, 0, 1) 100%), '
+                'url({})'.format(image_url)
+            ),
+            'backgroundRepeat': 'no-repeat',  # 确保背景图像覆盖整个元素
+            'backgroundSize': 'cover',  # 防止背景图像重复
+        }
+    )
+
 def render_content():
     return html.Div(
         [
@@ -112,70 +186,29 @@ def render_content():
                     # 'minWidth': '520px'
                 }
             ),
-            html.Div(
-                html.Div(
-                    [
-                        fac.AntdText(
-                            '特色应用',
-                            style = {
-                                'fontWeight': '700',
-                                'lineHeight': '1.5',
-                                'fontSize': '0.95rem',
-                                'color': 'rgb(104, 205, 249)'
-                            }
-
-                        ),
-                        fac.AntdText(
-                            '生产力黑客的终极指南',
-                            style = {
-                                'fontWeight': '700',
-                                'lineHeight': '1.5',
-                                'fontSize': '1.125rem',
-                                'overflow': 'hidden',
-                                'textOverflow': 'ellipsis',
-                                'whiteSpace': 'nowrap',
-                                'color': 'rgb(255, 255, 255)'
-                            }
-                        ),
-                        fac.AntdText(
-                            '她迫不及待地打开礼物，眼睛里闪烁着兴奋的光芒。',
-                            style = {
-                                'margin': '0px',
-                                'lineHeight': '1.57143',
-                                'fontSize': '0.875rem',
-                                'fontWeight': '400',
-                                'overflow': 'hidden',
-                                'textOverflow': 'ellipsis',  # 超出省略
-                                'whiteSpace': 'nowrap',
-                                'color': 'rgb(255, 255, 255)'
-                            }
-                        ),
-                    ],
-                    style={
-                        'width': '100%',
-                        'overflow': 'hidden',
-                        'display': 'flex',
-                        'flexDirection': 'column',
-                        'gap': '8px',
-                        'padding': '24px',
-                        'bottom': '0px',
-                        # 'zIndex': '9',
-                        'textAlign': 'left',
-                        'position': 'absolute',
-                        'color': 'rgb(255, 255, 255)'
-                    }
-                ),
-                style={
-                    'height': '320px',
-                    'borderRadius': '16px',
-                    'position': 'relative',
-                    'backgroundImage': (
-                        'linear-gradient(to bottom, rgba(0, 0, 0, 0) -20%, rgba(0, 0, 0, 1) 100%), '
-                        'url({})'.format(dash.get_asset_url('imgs/slider_1.jpg'))
+            fac.AntdCarousel(
+                [
+                    render_carsousel(
+                        tag='特色应用',
+                        title='了解区块链技术：超越加密货币',
+                        description='炎热的夏日里，孩子们在洒水喷头旁奔跑，开心地咯咯笑着。',
+                        image_url=dash.get_asset_url('imgs/application/slider_1.jpg')
                     ),
-                    'backgroundRepeat': 'no-repeat',  # 确保背景图像覆盖整个元素
-                    'backgroundSize': 'cover',  # 防止背景图像重复
-                }
+                    render_carsousel(
+                        tag='特色应用',
+                        title='远程工作的兴起：优势、挑战和未来趋势',
+                        description='刚煮好的咖啡的香气弥漫在空气中，唤醒了我的感官。',
+                        image_url=dash.get_asset_url('imgs/application/slider_2.jpg')
+                    ),
+                    render_carsousel(
+                        tag='特色应用',
+                        title='数字时代的心理健康：驾驭社交媒体与幸福感',
+                        description='他用粘土精心制作了一个精美的雕塑，他的双手熟练地塑造了复杂的细节。',
+                        image_url=dash.get_asset_url('imgs/application/slider_3.jpg')
+                    ),
+                ],
+                dotPosition='top',
+                autoplay=True,
             ),
             indicator_card.render_layout(
                 type='application-indicator-card',

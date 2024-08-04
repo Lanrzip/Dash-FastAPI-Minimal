@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 import uvicorn
 
-from module.controller.system_controller import systemRouter
+from minimal.routers.system import systemRouter
 from config.env import AppConfig
 from utils.redis_utils import RedisUtil
 from utils.db_utils import init_create_table

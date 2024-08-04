@@ -6,6 +6,7 @@ import feffery_utils_components as fuc
 def render_layout(
     type,
     index,
+    img_src,
     title=None,
     style={}
 ):
@@ -14,7 +15,7 @@ def render_layout(
         [
             html.Div(
                 fac.AntdImage(
-                    src="https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/public/assets/icons/glass/ic-glass-bag.svg",
+                    src=img_src,
                     preview=False
                 ),
                 style={
@@ -26,7 +27,10 @@ def render_layout(
             html.Div(
                 [
                     fac.AntdIcon(
-                        icon='antd-rise',
+                        id={
+                            'type': f'{type}-trend-icon',
+                            'index': index
+                        },
                         style={
                             'width': '20px',
                             'height': '20px',
@@ -35,7 +39,10 @@ def render_layout(
                         }
                     ),
                     html.Span(
-                        '+2.6%',
+                        id={
+                            'type': f'{type}-trend-value',
+                            'index': index
+                        },
                         style={
                             'fontSize': '0.875rem',
                             'fontWeight': '600',
@@ -59,6 +66,10 @@ def render_layout(
                         [
                             html.Div(
                                 title,
+                                id={
+                                    'type': f'{type}-title',
+                                    'index': index
+                                },
                                 style={
                                     'marginBottom': '8px',
                                     'fontSize': '0.875rem',
@@ -67,7 +78,10 @@ def render_layout(
                                 }
                             ),
                             html.Div(
-                                '71.4万',
+                                id={
+                                    'type': f'{type}-title-value',
+                                    'index': index
+                                },
                                 style={
                                     'fontSize': '1.5rem',
                                     'fontWeight': '700',
@@ -93,13 +107,13 @@ def render_layout(
                                         'width': '50%'
                                     },
                                 ],
-                                data=[
-                                    {
-                                        'indicator-mini-chart': [
-                                            3,4,5,5,1,2,3,5,6,3,2
-                                        ],
-                                    }
-                                ],
+                                # data=[
+                                #     {
+                                #         'indicator-mini-chart': [
+                                #             3,4,5,5,1,2,3,5,6,3,2
+                                #         ],
+                                #     }
+                                # ],
                                 bordered=False,
                                 id={
                                     'type': f'{type}-mini-chart',
@@ -107,22 +121,22 @@ def render_layout(
                                 },
                             ),
                             fuc.FefferyStyle(
-                                rawStyle='''
-                                    .analytics-indicator-card .ant-table-thead {
+                                rawStyle=f'''
+                                    .analytics-indicator-card-{index} .ant-table-thead {{
                                         display: none;
-                                    }
-                                    .analytics-indicator-card .ant-pagination {
+                                    }}
+                                    .analytics-indicator-card-{index} .ant-pagination {{
                                         display: none;
-                                    }
-                                    .analytics-indicator-card .tr {
-                                        background-color: #CAF7DD
-                                    }
-                                    .analytics-indicator-card .ant-table-tbody>tr.ant-table-row:hover>td, .ant-table-tbody>tr>td.ant-table-cell-row-hover {
-                                        background-color: #CAF7DD
-                                    }
-                                    .analytics-indicator-card .ant-table-tbody>tr.ant-table-row>td {
-                                        background: #CAF7DD;
-                                    }
+                                    }}
+                                    .analytics-indicator-card-{index} .tr {{
+                                        background-color: {style.get('backgroundColor')};
+                                    }}
+                                    .analytics-indicator-card-{index} .ant-table-tbody>tr.ant-table-row:hover>td, .ant-table-tbody>tr>td.ant-table-cell-row-hover {{
+                                        background-color: {style.get('backgroundColor')};
+                                    }}
+                                    .analytics-indicator-card-{index} .ant-table-tbody>tr.ant-table-row>td {{
+                                        background-color: {style.get('backgroundColor')};
+                                    }}
                                 '''
                             )
                         ],
@@ -133,7 +147,7 @@ def render_layout(
                             'position': 'absolute',
                             'bottom': -10
                         },
-                        className='analytics-indicator-card'
+                        className=f'analytics-indicator-card-{index}'
                     )
                 ],
                 style={
@@ -163,7 +177,6 @@ def render_layout(
         style={
             'position': 'relative',
             'color': 'var(--palette-primary-darker)',
-            'backgroundColor': '#CAF7DD',
             'overflow': 'hidden',
             'borderRadius': '16px',
             'padding': '24px',

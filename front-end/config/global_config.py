@@ -17,7 +17,7 @@ class RouterConfig:
     ]
 
     # 静态路由列表
-    STATIC_VALID_PATHNAME = ['/', '/login', '/forget', '/register', '/application', '/e-commerce', '/analytics', '/user/profile']
+    STATIC_VALID_PATHNAME = ['/', '/login', '/forget', '/register', '/application', '/e-commerce', '/analytics', '/banking', '/user/profile']
 
 
 class ApiBaseUrlConfig:
