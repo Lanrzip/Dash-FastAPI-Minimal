@@ -1,5 +1,5 @@
 <p align="center">
-	<img alt="logo" src="./front-end/assets/imgs/logo.png">
+	<img alt="logo" src="./front-end/assets/imgs/logo.png" width="40" height="40">
 </p>
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Dash-FastAPI-Minimal</h1>
 <h4 align="center">基于Dash+FastAPI前后端分离的Minimal实现</h4>
@@ -12,11 +12,6 @@
 Dash-FastAPI-Minimal是[Mui-Minimal](https://mui.com/store/previews/minimal-dashboard/)的模仿实现
 
 ## 效果
-
-![alt text](image.png)
-
-![alt text](image-1.png)
-
 
 <table>
     <tr>
